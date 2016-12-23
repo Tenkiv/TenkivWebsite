@@ -1,0 +1,1587 @@
+//font mixin
+=add-font($name, $eot, $woff2, $woff, $ttf, $svg)
+  @font-face
+    font-family: #{$name}
+    src: url($eot) format('embedded-opentype'), url($woff2) format('woff2'), url($woff) format('woff'), url($ttf) format('truetype'), url($svg) format('svg')
+
+//fonts --------------------------------
++add-font('Din', 'assets/webfonts/30FAFE_0_0.eot', 'assets/webfonts/30FAFE_0_0.woff2', 'assets/webfonts/30FAFE_0_0.woff', 'assets/webfonts/30FAFE_0_0.ttf', 'assets/webfonts/30FAFE_0_0.svg#wf')
+
++add-font('Din Bold', 'assets/webfonts/30FAFE_1_0.eot', 'assets/webfonts/30FAFE_1_0.woff2', 'assets/webfonts/30FAFE_1_0.woff', 'assets/webfonts/30FAFE_1_0.ttf', 'assets/webfonts/30FAFE_1_0.svg#wf')
+
++add-font('Header', 'assets/webfonts/Header-Regular.eot', 'assets/webfonts/Header-Regular.woff2', 'assets/webfonts/Header-Regular.woff', 'assets/webfonts/Header-Regular.ttf', 'assets/webfonts/Header-Regular.svg')
+
++add-font('Header Bold', 'assets/webfonts/Header-Bold.eot', 'assets/webfonts/Header-Bold.woff2', 'assets/webfonts/Header-Bold.woff', 'assets/webfonts/Header-Bold.ttf', 'assets/webfonts/Header-Bold.svg')
+
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono')
+
+//font variables
+$din: 'Din', sans-serif
+$dinBold: 'Din Bold', sans-serif
+$Header: 'Header', sans-serif
+$HeaderBold: 'Header Bold', sans-serif
+
+//color variables
+$palette-1: #FF810D
+$palette-2: #E8550C
+$palette-3: #FF3000
+$palette-4: #D42C44
+$palette-5: #A92789
+$palette-6: #8324C2
+$palette-7: #5f20ff
+$palette-8: #4B43FF
+$palette-9: #3666FF
+$palette-10: #368BFF
+$palette-11: #00B1FF
+$palette-12: #0CDFE8
+$palette-13: #0DFFC6
+
+$orange: $palette-3
+$orange-1: #FF5933
+$orange-2: #FF8366
+$orange-3: #FFAC99
+$orange-4: #FFD6CC
+
+$purple: $palette-7
+$purple-1: #7F4DFF
+$purple-2: #9F79FF
+$purple-3: #BFA6FF
+$purple-4: #DFD2FF
+
+$blue: $palette-11
+$blue-1: #33C1FF
+$blue-2: #66D0FF
+$blue-3: #99E0FF
+$blue-4: #CCEFFF
+
+//media query variables
+$very-small: 700px
+$small: 1024px
+$medium: 1920px
+$large: 2560px
+
+//mixins --------------------------------
+//set flexbox for parent container
+=flex-parent($direction, $wrap, $main-axis, $cross-axis)
+  display: -webkit-flex
+  display: flex
+  -webkit-flex-flow: $direction $wrap
+  flex-flow: $direction $wrap
+  -webkit-justify-content: $main-axis
+  justify-content: $main-axis
+  -webkit-align-items: $cross-axis
+  align-items: $cross-axis
+
+//flexbox child properties
+=flex-child($order, $self, $flex)
+  -webkit-order: $order
+  order: $order
+  -webkit-align-self: $self
+  align-self: $self
+  -webkit-flex: $flex
+  flex: $flex
+
+//animation mixin
+=animation($name, $time, $type, $delay, $iteration, $direction, $fillmode)
+  -webkit-animation: $name $time $type $delay $iteration $direction $fillmode
+  -moz-animation: $name $time $type $delay $iteration $direction $fillmode
+  -o-animation: $name $time $type $delay $iteration $direction $fillmode
+  animation: $name $time $type $delay $iteration $direction $fillmode
+
+//making animation mixin
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-o-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+//transform mixin
+=transform($content)
+  -ms-transform: $content
+  -moz-transform: $content
+  -webkit-transform: $content
+  transform: $content
+
+=transform-origin($origin)
+  -ms-transform-origin: $origin
+  -moz-transform-origin: $origin
+  -webkit-transform-origin: $origin
+  transform-origin: $origin
+
+*
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+body
+  background: #fff
+  padding: 0
+  margin: 0
+  font-family: $din
+  font-size: 16px
+  overflow-x: hidden
+
++keyframes(fadeIn)
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
++keyframes(fadeOut)
+  to
+    opacity: 0
+
++keyframes(bounceIn)
+  70%
+    +transform(scale(1.1,1.1))
+  90%
+    +transform(scale(.9,.9))
+  100%
+    +transform(scale(1,1))
+
++keyframes(blink)
+  50%
+    opacity: 0
+
++keyframes(scaleUp)
+  to
+    +transform(scale(1, 1))
+
++keyframes(dashArrayZero)
+  to
+    stroke-dashoffset: 0
+
++keyframes(widthUp)
+  to
+    width: 100%
+
++keyframes(rotate360)
+  0%
+    +transform(rotateZ(0deg))
+  100%
+    +transform(rotateZ(360deg))
+
++keyframes (pulse)
+  0%
+    +transform(scale(.7, .7))
+  100%
+    +transform(scale(1, 1))
+
+.bold
+  font-family: $HeaderBold
+
+$sectionHeight: 100vh
+$sectionSmallHeight: $sectionHeight*.75
+
+//nav bar
+.nFixed
+  position: fixed
+  width: 100%
+  +flex-parent(row, nowrap, space-between, center)
+  height: 60px
+  z-index: 99
+  padding: 20px 20px 0 20px
+  pointer-events: none
+  .nLogoContainer
+    background: #fff
+    border-radius: 50%
+    padding: 6px 8px 8px 8px
+    border: 1px solid #eee
+    pointer-events: all
+    +flex-parent(row, nowrap, center, center)
+    img
+      width: 30px
+      height: 30px
+    .nLogoText
+      font-family: $din
+      color: #fff
+      padding-left: 20px
+      font-size: 1.2em
+  .nHamburger
+    background: #000 url('assets/imgs/hamburger.svg') no-repeat center
+    background-size: 25px 25px
+    width: 40px
+    border: 1px solid #fff
+    height: 40px
+    pointer-events: all
+    &:hover
+      cursor: pointer
+
++keyframes(a_OverlayIn)
+  to
+    opacity: 1
+    height: 100%
+    margin-top: 0
+
++keyframes(a_OverlayOut)
+  to
+    height: 0
+    opacity: 0
+    margin-top: -200px
+
+//expanded navbar
+.nOverlay
+  position: fixed
+  background: #fff
+  +flex-parent(column, nowrap, center, center)
+  color: #000
+  width: 100%
+  opacity: 0
+  height: 0
+  z-index: 99
+  padding: 25px 25px 20px 20px
+  margin-top: -200px
+  transition: all .3s ease-in-out
+  .nClose
+    background: url('assets/imgs/close_window.svg') no-repeat center
+    width: 30px
+    height: 30px
+    align-self: flex-end
+    -webkit-align-self: flex-end
+    &:hover
+      cursor: pointer
+  a.nItem
+    width: 50%
+    height: 25%
+    font-family: $HeaderBold
+    border-bottom: 6px solid #000
+    text-align: center
+    font-size: 3em
+    text-decoration: none
+    color: #000
+    +flex-parent(column, nowrap, center, center)
+  a.nItem:last-child
+    border-bottom: none
+
+input[type=checkbox]
+  display: none
+
+input[type=checkbox]:checked ~ div.nOverlay
+  margin: 0
+  height: 100%
+  opacity: 1
+
+
+.a_OverlayIn
+  +animation(a_OverlayIn, .3s, ease, 0s, 1, normal, forwards)
+
+//image loading stuff
+.backgroundContainer
+  height: 100%
+  width: 100%
+  overflow: hidden
+
+.backgroundImage
+  opacity: 0
+  object-fit: cover
+  position: fixed
+  top: 0
+  left: 0
+  object-position: 0 0
+  height: 100%
+  width: 100%
+  z-index: 0
+
+.backgroundImgOverlay
+  position: absolute
+  left: 0
+  top: 0
+  height: 100vh
+  width: 100%
+  z-index: 5
+  @media only screen and (max-width: $very-small)
+    height: 75vh
+
+.loaded
+  opacity: 1
+  +animation(fadeIn, 2s, ease-in-out, 0s, 1, normal, forwards)
+
+//global section styles
+.section
+  margin: 0
+  height: auto
+  width: 100%
+  @media only screen and (max-width: $very-small)
+    padding: 0 10px 0 10px
+
+//water page --------------------------------
+
+.waterFirst
+  +flex-parent(column, nowrap, flex-start, center)
+  height: $sectionHeight
+  background: #000
+  overflow: hidden
+  color: #fff
+  z-index: 1
+  .fullscreenVideo
+    position: fixed
+    top: 50%
+    left: 50%
+    min-width: 100%
+    min-height: 100%
+    width: auto
+    height: auto
+    z-index: 1
+    -ms-transform: translateX(-50%) translateY(-50%)
+    -moz-transform: translateX(-50%) translateY(-50%)
+    -webkit-transform: translateX(-50%) translateY(-50%) translate3d(0,0,0)
+    -webkit-backface-visibility: hidden
+    transform: translateX(-50%) translateY(-50%)
+    background: url('assets/imgs/water_img.jpg') no-repeat
+    background-size: cover
+    overflow: hidden
+  .waterFirstOverlay
+    +flex-parent(column, nowrap, space-between, center)
+    color: #fff
+    height: $sectionHeight
+    width: 100%
+    padding: 0 5vw 0 5vw
+    background: rgba(0,0,0,.3)
+    .waterFirstTypedText
+      padding-top: 20vh
+      height: auto
+      font-family: $Header
+      font-size: 3em
+      width: 100%
+      text-align: center
+      @media only screen and (min-width: $large)
+        font-size: 5em
+      @media only screen and (min-width: $medium)
+        font-size: 4em
+      @media only screen and (max-width: $very-small)
+        font-size: 2.5em
+      .cursor
+        color: #fff
+        opacity: 1
+        +animation(blink, 1s, steps(1, end), 0s, infinite, normal, none)
+    .waterBottomContainer
+      +flex-parent(column, nowrap, flex-end, center)
+      height: 50vh
+      width: 100%
+      .challengeAcceptedText
+        +flex-parent(column, nowrap, center, center)
+        background: #fff
+        padding: 40px 80px 40px 80px
+        text-align: center
+        font-size: 3em
+        font-family: $HeaderBold
+        color: #000
+        +transform(scale(0,0))
+        @media only screen and (min-width: $large)
+          font-size: 5em
+        @media only screen and (min-width: $medium)
+          font-size: 4em
+        @media only screen and (max-width: $very-small)
+          padding: 20px 40px 20px 40px
+          font-size: 2.5em
+      .CAJoiningLineTop, .CAJoiningLineBottom
+        width: 6px
+        background: #fff
+        height: 20%
+        margin: -1px 0 0 0
+        transform-origin: top center
+        +transform(scale(1, 0))
+      .waterTopSvg
+        padding: 0
+        margin: -1px 0 0 0
+        width: 100px
+        height: auto
+        display: block
+      .waterTopSvgLine
+        fill: none
+        stroke: #fff
+        stroke-width: 6px
+        stroke-miterlimit: 10
+        stroke-linejoin: round
+        stroke-dasharray: 200
+        stroke-dashoffset: 200
+        stroke-linecap: round
+
+.edgeLineScaling
+  +transform(scale(0, 0))
+  stroke-dasharray: 0 !important
+  stroke-dashoffset: 0 !important
+
+.a_challengeAcceptedText
+  +animation(bounceIn, 1s, linear, .5s, 1, normal, forwards)
+
+.a_CAJoiningLineTop
+  +animation(scaleUp, .5s, linear, 1.5s, 1, normal, forwards)
+
+.a_waterTopSvg
+  +animation(dashArrayZero, 1s, linear, 2s, 1, normal, forwards)
+
+.a_CAJoiningLineBottom
+  +animation(scaleUp, .5s, linear, 3s, 1, normal, forwards)
+
+.a_waterTopSvgEdge
+  +animation(scaleUp, 1s, linear, 2s, 1, normal, forwards)
+
+.waterWrapper
+  position: absolute
+  height: auto
+  width: 100%
+  z-index: 2
+
+.waterSecond
+  +flex-parent (column, nowrap, center, center)
+  background: #fff
+  color: #000
+  height: auto
+  z-index: 99
+  padding: 80px 20px 80px 20px
+  @media only screen and (max-width: $small)
+    padding: 40px 20px 40px 20px
+  .waterSecondMidContainer
+    width: 100%
+    +flex-parent(row, nowrap, center, flex-start)
+    @media only screen and (max-width: $very-small)
+      +flex-parent(column, nowrap, center, center)
+    .wsItemContainer
+      flex: 1
+      max-width: 500px
+      margin: 0 2vw 0 2vw
+      +flex-parent(column, nowrap, flex-start, center)
+      @media only screen and (max-width: $very-small)
+        margin: 20px 0 20px 0
+      .wsItemImg
+        width: auto
+        height: 200px
+        @media only screen and (max-width: $small)
+          height: 150px
+      .wsItemTitle
+        font-family: $HeaderBold
+        font-size: 2.5em
+        padding-top: 40px
+        width: 100%
+        text-align: center
+        @media only screen and (max-width: $small)
+          font-size: 2em
+      .wsItemStat
+        font-family: $din
+        font-size: 1.2em
+        padding-top: 20px
+        width: 100%
+        text-align: center
+        @media only screen and (max-width: $very-small)
+          width: 80%
+        @media only screen and (max-width: $small)
+          font-size: 1em
+  .waterSecondBottom
+    font-size: 2em
+    font-family: $Header
+    background: #000
+    color: #fff
+    padding: 20px 30px 20px 30px
+    margin-top: 80px
+    text-align: center
+    @media only screen and (max-width: $small)
+      margin-top: 40px
+      font-size: 1.5em
+
+//sun section
++keyframes(bounceInText)
+  10%
+    +transform(scale(1.1, 1.1))
+  12%
+    +transform(scale(.9, .9))
+  15%
+    +transform(scale(1, 1))
+  100%
+    +transform(scale(1, 1))
+
+$solarPower: 1900px
+$earthPower: .015 * $solarPower
+
+.sunSection
+  height: auto
+  +flex-parent(row, nowrap, center, center)
+  background: #000 url('assets/imgs/star_svg_bg.svg') no-repeat center fixed
+  background-size: cover
+  color: #fff
+  z-index: 1
+  overflow: hidden
+  position: relative
+  .sunSectionForeground
+    +flex-parent(column, nowrap, center, center)
+    height: 100%
+    width: 100%
+    padding: 120px 20px 80px 20px
+    @media only screen and (max-width: $small)
+      padding: 80px 20px 40px 20px
+    .svgTextContainer
+      padding: 20px
+      text-align: center
+      font-family: $HeaderBold
+      background: #fff
+      color: #000
+    .sunText
+      z-index: 3
+      font-size: 2.5em
+      align-self: flex-start
+      margin-left: 5%
+      +transform(scale(0,0))
+      transform-origin: bottom center
+      @media only screen and (max-width: $small)
+        font-size: 1.4em
+        align-self: center
+        margin-left: 0
+      &:after
+        content: ""
+        display: block
+        position: absolute
+        bottom: -14px
+        right: 33%
+        width: 0
+        border-width: 15px 15px 0
+        border-style: solid
+        border-color: #fff transparent
+        @media only screen and (max-width: $small)
+          right: 45%
+    .earthContainer
+      padding: 120px 10% 0 0
+      align-self: flex-end
+      +flex-parent(column, nowrap, center, center)
+      @media only screen and (max-width: $small)
+        align-self: center
+        padding: 120px 0 0 0
+      .earthText
+        flex: 1
+        margin-top: 20px
+        z-index: 3
+        font-size: 2em
+        +transform(scale(0,0))
+        transform-origin: bottom center
+        @media only screen and (max-width: $small)
+          font-size: 1.4em
+        &:after
+          content: ""
+          display: block
+          position: absolute
+          top: -14px
+          left: 47.4%
+          width: 0
+          +transform(rotate(180deg))
+          border-width: 15px 15px 0
+          border-style: solid
+          border-color: #fff transparent
+          @media only screen and (max-width: $small)
+            left: 45%
+      .smogEarthContainer
+        flex: 1
+        z-index: 2
+        +transform(scale(0, 0))
+      .smogEarthSVG
+        height: $earthPower
+        width: $earthPower
+    .sunBottomText
+      background: #000
+      color: #fff
+      z-index: 3
+      font-size: 2em
+      margin: 120px 0 0 0
+      opacity: 0
+      @media only screen and (max-width: $small)
+        font-size: 1.4em
+  .sunSVG
+    top: -33%
+    left: -33%
+    z-index: 0
+    position: absolute
+    transform-origin: center center
+    height: $solarPower
+    width: $solarPower
+    +transform(scale(0,0))
+    @media only screen and (min-width: $medium)
+      left: 0
+    @media only screen and (max-width: $small)
+      top: -25%
+
+.a_smogEarthSVG
+  +animation(rotate360, 5s, linear, 0s, infinite, normal, forwards)
+
+.a_smogEarthContainer
+  +animation(bounceIn, .5s, ease, 0s, 1, normal, forwards)
+
+.a_earthText
+  +animation(bounceInText, 5s, ease, 1s, 1, normal, forwards)
+
+.a_sunSVG
+  +animation(scaleUp, 2s, ease, 3s, 1, normal, forwards)
+
+.a_sunText
+  +animation(bounceInText, 5s, ease, 6s, 1, normal, forwards)
+
+.a_sunBottomText
+  +animation(fadeIn, .5s, ease, 8s, 1, normal, forwards)
+
+//diagram animations
++keyframes (moveDashes)
+  0%
+    stroke-dashoffset: 0
+  100%
+    stroke-dashoffset: 100
+
++keyframes (float)
+  0%
+    +transform(translate(0,0))
+  100%
+    +transform(translate(0, 3px))
+
+.waterThird
+  +flex-parent(column, nowrap, center, center)
+  background: #fff
+  color: #000
+  top: 100vh
+  height: auto
+  width: 100%
+  padding: 80px 5vw 0 5vw
+  @media only screen and (max-width: $very-small)
+    padding: 40px 20px 20px 20px
+  .waterThirdTitle
+    padding: 40px
+    font-size: 4em
+    border: 10px solid #000
+    font-family: $HeaderBold
+    text-align: center
+    @media only screen and (max-width: $very-small)
+      font-size: 2.5em
+      padding: 20px
+      border: 6px solid #000
+  .waterThirdTagline
+    padding: 40px 0 0 0
+    line-height: 1.4em
+    font-size: 1.4em
+    margin-bottom: 80px
+    width: 80%
+    max-width: 1500px
+    text-align: center
+    @media only screen and (max-width: $very-small)
+      margin-bottom: 40px
+      font-size: 1em
+      width: 95%
+      text-align: left
+    & a
+      color: #000
+      text-decoration: none
+      transition: .5s
+    & a:hover, & a:focus
+      color: #fff
+      background: #000
+      cursor: pointer
+  .waterDiagramContainer
+    height: auto
+    width: 100%
+    visibility: hidden
+    @media only screen and (max-width: $small)
+      display: none
+    .waterDiagram
+      opacity: 0
+      height: auto
+      width: 100%
+      display: block
+    .dashedLine
+      stroke: #999
+      stroke-dasharray: 1 5
+      fill: none
+      stroke-linecap: round
+      stroke-linejoin: round
+      stroke-width: 2px
+      opacity: 0
+      +animation(moveDashes, 4s, linear, 0s, infinite, reverse, none)
+    .alternate
+      +animation(moveDashes, 4s, linear, 0s, infinite, alternate, none)
+    .waterInputToxic
+      stroke: #143082
+    .waterInputRiver
+      stroke: #143082
+    .waterInputOcean
+      stroke: #143082
+    .cleanWater
+      stroke: #57d4ff
+    .hot
+      stroke: #999
+    .modHot
+      stroke: #999
+    #fish
+      +animation(float, 1s, linear, 0s, infinite, alternate, forwards)
+    .diagramInfoItem
+      opacity: 0
+      +transform(scale(0, 0))
+      +transform-origin(50% 50%)
+      &:hover
+        cursor: pointer
+    .diagramCircles
+      fill: #000
+      stroke-width: 0
+      transition: .5s
+      &:hover
+        fill: #333
+    .diagramNumbers
+      fill: #fff
+      stroke-width: 0
+    .sparkle
+      fill: #fff
+      +transform-origin(410px 535px)
+      +animation(pulse, 1s, linear, 0s, infinite, alternate, forwards)
+    .fillCup
+      fill: #57d4ff
+      +transform(scale(0, 0) translate(-17.93px, -12.21px))
+      +transform-origin(400px 558px)
+    .faucetWater
+      stroke: #57d4ff
+      stroke-linejoin: round
+      stroke-width: 11px
+      fill: none
+      stroke-dasharray: 1000
+      stroke-dashoffset: 1000
+
+.a_FaucetWater
+  +animation(dashArrayZero, 3s, linear, 2s, 1, normal, forwards)
+
+.solidLine, .mobileSolidLine
+  stroke: #000
+  fill: none
+  stroke-linecap: round
+  stroke-linejoin: round
+  stroke-width: 2px
+  stroke-dashoffset: 9999
+
+.mobileFaintLine
+  stroke: #eee
+  fill: none
+  stroke-linecap: round
+  stroke-linejoin: round
+  stroke-width: 2px
+
+.waterDiagramMobileContainer
+  width: 100%
+  height: auto
+  padding: 0 0 80px 0
+  position: relative
+  +flex-parent(column, nowrap, center, center)
+  @media only screen and (max-width: $very-small)
+    padding: 0 0 40px 0
+  @media only screen and (min-width: $small + 1)
+    display: none
+  & a
+    color: #000
+    text-decoration: none
+    transition: .5s
+  & a:hover, & a:focus
+    color: #fff
+    background: #000
+  #wdmiWaterInputs
+    background: url('assets/imgs/mobile_water_diagram_2.svg') repeat-y center
+    background-size: 100% auto
+  #wdmiModules
+    background: url('assets/imgs/mobile_water_diagram_4.svg') repeat-y center
+    background-size: 100% auto
+  #wdmiSystem
+    background: url('assets/imgs/mobile_water_diagram_6.svg') repeat-y center
+    background-size: 100% auto
+  .wdmImgContainer
+    width: 100%
+    height: auto
+    +flex-parent(row, nowrap, center, flex-start)
+    img
+      width: 100%
+  #wdmiWaterInputs
+    padding: 20px 20px 80px 20px
+    @media only screen and (max-width: $very-small)
+      padding: 40px 20px 40px 20px
+  #wdmiSystem
+    padding: 100px 20px 20px 20px
+    @media only screen and (max-width: $very-small)
+      padding: 60px 20px 0 20px
+  .wdmiContainer
+    width: 100%
+    height: auto
+    padding: 80px 20px 80px 20px
+    +flex-parent(column, nowrap, flex-start, center)
+    @media only screen and (max-width: $very-small)
+      padding: 60px 20px 20px 20px
+    .wdmiTopContainer
+      width: 100%
+      height: auto
+      +flex-parent(row, nowrap, flex-start, center)
+      .wdmiNumber
+        width: 40px
+        height: 40px
+        border-radius: 50% 50%
+        background: #000
+        color: #fff
+        padding: 0
+        font-size: 1.4em
+        text-align: center
+        line-height: 1.75em
+        font-family: $HeaderBold
+        margin-right: 15px
+      .wdmiTitle
+        width: auto
+        font-size: 1.6em
+        font-family: $Header
+    .wdmiBottom
+      width: 100%
+      height: auto
+      padding: 30px 5px 20px 5px
+      line-height: 1.4em
+
+.infoItemPopupContainer
+  position: absolute
+  +flex-parent(column, nowrap, flex-start, flex-end)
+  background: #fff
+  border: 5px solid #000
+  height: auto
+  z-index: 999
+  padding: 10px
+  @media only screen and (max-width: $small)
+    width: 300px
+  @media only screen and (min-width: $small + 1) and (max-width: $medium)
+    width: 350px
+  @media only screen and (min-width: $medium + 1)
+    width: 400px
+  & a
+    color: #000
+    text-decoration: none
+    transition: .5s
+  & a:hover, & a:focus
+    color: #fff
+    background: #000
+  .infoItemClose
+    width: 20px
+    height: 20px
+    background: url('assets/imgs/close_window.svg') no-repeat center
+    &:hover
+      cursor: pointer
+  .infoItemContent
+    width: 100%
+    height: auto
+    padding: 20px
+    line-height: 1.2
+
+#inputsPopup
+  transform-origin: top left
+#modulesPopup
+  transform-origin: top center
+#systemPopup
+  transform-origin: top right
+
+.waterFourth
+  +flex-parent(column, nowrap, flex-start, center)
+  background: #57d4ff
+  background: -moz-linear-gradient(top, #57d4ff 0%, #143082 100%)
+  background: -webkit-linear-gradient(top, #57d4ff 0%, #143082 100%)
+  background: linear-gradient(to bottom, #57d4ff 0%, #143082 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57d4ff', endColorstr='#143082',GradientType=0 )
+  width: 100%
+  height: auto
+  position: relative
+  padding: 120px 20px 120px 20px
+  @media only screen and (max-width: $very-small)
+    padding: 80px 20px 80px 20px
+  .bottomWaterTopText
+    color: #fff
+    font-family: $Header
+    font-size: 3em
+    padding: 0 0 80px 0
+    @media only screen and (max-width: $very-small)
+      font-size: 2em
+      padding: 0 0 40px 0
+  .emailContainer
+    height: 300px
+    width: 100%
+    +flex-parent(column, nowrap, center, center)
+    .emailInput
+      width: 40vw
+      padding: 20px 10px 20px 20px
+      border: 6px solid #fff
+      background: #fff
+      color: #000
+      font-size: 2em
+      font-family: $Header
+      text-align: left
+      margin-bottom: 40px
+      transition: .5s
+      @media only screen and (max-width: $small)
+        width: 60%
+      @media only screen and (max-width: $very-small)
+        width: 90%
+        font-size: 1.6em
+    .submitButton
+      width: auto
+      background: #0ae084
+      padding: 15px
+      color: #fff
+      font-family: $HeaderBold
+      font-size: 2em
+      border: none
+      border-radius: 4px
+      transition: .5s
+      opacity: 0
+      pointer-events: none
+      &:hover, &:focus
+        cursor: pointer
+        +transform(scale(1.1, 1.1))
+    .bottomWaterExplanationText
+      font-family: $Header
+      width: 100%
+      text-align: center
+      color: #fff
+      font-size: 1.4em
+      padding-top: 40px
+    .successMessage
+      display: none
+    .successMessageCheckmark
+      padding: 0
+      width: 100px
+      height: auto
+    .successMessageCheckmarkLine, .successMessageCheckmarkLineCircle
+      fill: none
+      stroke: #fff
+      stroke-width: 6px
+      stroke-miterlimit: 10
+      stroke-linejoin: round
+      stroke-dasharray: 300
+      stroke-dashoffset: 300
+      stroke-linecap: round
+    .successMessageCheckmarkLineCircle
+      +transform(rotate(-90deg))
+      transform-origin: center center
+    .successMessageText
+      font-family: $Header
+      font-size: 1.5em
+      color: #fff
+      padding-top: 40px
+      opacity: 0
+      text-align: center
+
+.successMessageFlex
+  +flex-parent(column, nowrap, center, center)
+
+.a_successMessageCheckmarkLineCircle
+  +animation(dashArrayZero, .5s, linear, 0s, 1, normal, forwards)
+
+.a_successMessageCheckmarkLine
+  +animation(dashArrayZero, 1s, linear, .5s, 1, normal, forwards)
+
+.a_successMessageText
+  +animation(fadeIn, .5s, linear, 1s, 1, normal, forwards)
+
+.footer
+  height: auto
+  position: relative
+  background: #143082
+  color: #fff
+  margin: -1px 0 0 0
+  padding: 120px 20px 120px 20px
+  font-family: $Header
+  +flex-parent(row, nowrap, center, center)
+  @media only screen and (max-width: $small)
+    +flex-parent(column, nowrap, center, center)
+    padding: 80px 40px 80px 40px
+  .footerTitle
+    font-family: $HeaderBold
+    font-size: 2em
+    padding-bottom: 10px
+    border-bottom: 3px solid #fff
+    width: 100%
+  .footerItem
+    height: 100%
+    width: 40%
+    @media only screen and (max-width: $small)
+      width: 100%
+  .footerLeft
+    +flex-parent(column, nowrap, center, center)
+    margin-right: 100px
+    @media only screen and (max-width: $small)
+      margin-right: 0
+      padding-bottom: 40px
+    .footerContactContainer
+      padding: 40px 0 0 0
+      width: 100%
+      font-size: 1.2em
+      line-height: 1.4em
+      text-align: left
+    & a
+      text-decoration: none
+      color: #fff
+      transition: .5s
+    & a:hover, & a:focus
+      background: #000
+  .footerRight
+    +flex-parent(column, nowrap, center, center)
+    .socialMediaContainer
+      width: 100%
+      +flex-parent(row, nowrap, flex-end, center)
+      @media only screen and (max-width: $small)
+        +flex-parent(row, nowrap, flex-start, center)
+        margin-left: -8px
+      img
+        height: 60px
+        width: 60px
+        padding: 5px
+        margin: 0 8px 0 8px
+        transition: .5s
+        border: 4px solid #fff
+        @media only screen and (max-width: $very-small)
+          border: 2px solid #fff
+          height: 40px
+          width: 40px
+        &:hover, &:focus
+          +transform(scale(.9, .9))
+    .footerRightText
+      padding: 40px 0 0 0
+      width: 100%
+      font-size: 1.2em
+      line-height: 1.4em
+      text-align: right
+      @media only screen and (max-width: $small)
+        text-align: left
+      & a
+        text-decoration: none
+        color: #fff
+        transition: .5s
+      & a:hover, & a:focus
+        background: #000
+
+//control page --------------------------------
+.controlFooter
+  background: #000
+
+.controlFirst
+  +flex-parent(row, nowrap, flex-end, center)
+  background: #333333
+  color: #fff
+  height: 100vh
+  overflow: hidden
+  @media only screen and (max-width: $very-small)
+    height: 75vh
+  .controlFirstOverlay
+    +flex-parent(column, nowrap, center, center)
+    color: #fff
+    width: 100%
+    height: 100vh
+    padding: 0 20px 0 20px
+    @media only screen and (max-width: $very-small)
+      height: 75vh
+    .controlTitleContainer
+      padding: 40px
+      border: 5px solid #fff
+      background: rgba(0,0,0,.5)
+      font-family: $HeaderBold
+      .controlFirstTitle
+        font-size: 5em
+        text-align: center
+        @media only screen and (max-width: $small)
+          font-size: 4em
+        @media only screen and (max-width: $very-small)
+          font-size: 2.5em
+      .controlFirstDescription
+        font-size: 2em
+        padding-top: 20px
+        text-align: center
+        font-family: $Header
+        @media only screen and (max-width: $very-small)
+          font-size: 1.5em
+
+.controlWrapper
+  position: absolute
+  height: auto
+  width: 100%
+  z-index: 2
+
++keyframes(revealContent)
+  to
+    +transform(scale(1, 1))
+    opacity: 1
+    width: 100%
+
++keyframes(controlContentRemove)
+  to
+    opacity: 0
+    +transform(scale(0,0))
+    width: 0
+
+.controlFourth
+  +flex-parent(row, wrap, center, flex-start)
+  padding: 120px 40px 120px 40px
+  height: auto
+  background: #fff
+  @media only screen and (max-width: $small)
+    +flex-parent(column, nowrap, center, center)
+    padding: 80px 20px 80px 20px
+  @media only screen and (max-width: $very-small)
+    padding: 40px 20px 40px 20px
+  .controlFourthItem
+    +flex-parent(column, nowrap, flex-start, flex-start)
+    min-width: 325px
+    margin: 40px
+    @media only screen and (max-width: $small)
+      min-width: 80%
+    @media only screen and (max-width: $very-small)
+      min-width: 95%
+    &::selection, &::-moz-selection
+      background: transparent
+    .controlFourthItemTitle
+      font-size: 2.5em
+      padding: 0 0 10px 0
+      border-bottom: 5px solid #000
+      font-family: $HeaderBold
+      width: 100%
+    .controlFourthItemContents
+      width: 100%
+      &::selection, &::-moz-selection
+        background: transparent
+      &:hover
+        cursor: pointer
+      & a
+        text-decoration: none
+    .controlFourthItemContainer
+      +flex-parent(row, nowrap, flex-start, center)
+      padding: 5px
+      color: #000
+      height: 90px
+      z-index: 2
+      transition: .5s
+      .hiddenLayer
+        +flex-parent(row, nowrap, center, center)
+        +transform(scale(0,0))
+        opacity: 0
+        transition: 1s
+        width: 0
+        transform-origin: center center
+        img
+          height: 40px
+          width: 40px
+          transition: .5s
+          &:hover, &:focus
+            +transform(scale(.9, .9))
+        & a
+          text-decoration: none
+          color: #000
+          font-family: $dinBold
+          transition: .5s
+          height: 100%
+        & a:hover, & a:focus
+          color: #666
+        .hiddenLayerItem
+          flex: 1
+          text-align: center
+      .controlContentContainer
+        +flex-parent(row, nowrap, flex-start, center)
+        width: 100%
+        height: auto
+        transition: 1s
+        transform-origin: center center
+      .controlContentIcon
+        height: 50px
+        width: 50px
+      .controlContentText
+        font-size: 1.5em
+        padding: 0 0 0 20px
+
+.a_revealContent
+  +animation(revealContent, .5s, ease, .6s, 1, normal, forwards)
+
+.a_controlContentRemove
+  +animation(controlContentRemove, .5s, ease, 0s, 1, normal, forwards)
+
+//info page
++keyframes(infoPackFloat)
+  0%
+    +transform(translate(0, 0))
+  50%
+    +transform(translate(0, 5px))
+  100%
+    +transform(translate(0, 0))
+
++keyframes(infoPackFloatToTop)
+  to
+    +transform(translate(0, 0))
+
++keyframes(infoPackShadowScale)
+  0%
+    +transform(scale(.9, .9))
+  50%
+    +transform(scale(1, 1))
+  100%
+    +transform(scale(.9, .9))
+
++keyframes(infoPackShadowScaleDown)
+  to
+    +transform(scale(.9, .9))
+
+$infoTopPaddingR: calc(5vw + 30px)
+
+.infoTopContainer
+  +flex-parent(row, nowrap, space-between, center)
+  width: 100%
+  height: auto
+  padding: 160px $infoTopPaddingR 80px 5vw
+  color: #000
+  background: #fff
+  @media only screen and (min-width: $medium)
+    width: 80%
+    margin: 0 auto 0 auto
+  @media only screen and (max-width: $small)
+    +flex-parent(column, nowrap, center, center)
+    padding: 80px 40px 0 40px
+  .infoTopItemLeft
+    flex: 1
+    height: 100%
+    padding-right: 100px
+    max-width: 1000px
+    +flex-parent(column, nowrap, flex-start, flex-start)
+    @media only screen and (max-width: $small)
+      height: auto
+      width: 100%
+      padding: 0 0 40px 0
+      max-width: 100%
+    .infoTenkivBlurbTitle
+      font-family: $HeaderBold
+      font-size: 3em
+      width: 80%
+      border-bottom: 8px solid #000
+      @media only screen and (max-width: $small)
+        width: 100%
+        border-bottom: 6px solid #000
+        font-size: 2.5em
+        padding-bottom: 5px
+    .infoTenkivBlurb
+      font-family: $din
+      font-size: 1.2em
+      line-height: 1.4
+      padding-top: 30px
+      @media only screen and (max-width: $small)
+        padding-top: 20px
+  .infoTopItemRight
+    +flex-parent(column, nowrap, center, center)
+    background: #fff
+    padding: 50px 80px 50px 80px
+    border: 8px solid #000
+    box-shadow: 30px -30px 0 $palette-7
+    @media only screen and (max-width: $small)
+      width: 100%
+      box-shadow: none
+      border: none
+    @media only screen and (max-width: $very-small)
+      padding: 30px 60px 30px 60px
+    .infoPackSvg
+      width: 160px
+      height: auto
+      .infoPackPaperContainer
+        +transform(translate(0, 5px))
+      .infoPackLine
+        fill: none
+        stroke: #000
+        stroke-linecap: round
+        stroke-width: 3px
+        stroke-miterlimit: 10
+        stroke-linejoin: round
+      .infoPackFill
+        fill: #000
+      .infoPackFoldedCorner
+        display: none
+      .infoPackShadow
+        +transform(scale(.9, .9))
+        transform-origin: center center
+  .infoPackRightText
+    padding-top: 40px
+    font-family: $Header
+    font-size: 1.2em
+    color: #000
+    & a
+      text-decoration: none
+      color: #000
+      transition: .5s
+    & a:hover, & a:focus
+      color: #fff
+      background: $palette-7
+
+.a_infoPackPaperContainer
+  +animation(infoPackFloat, 2s, ease, 0s, infinite, normal, forwards)
+
+.a_infoPackShadow
+  +animation(infoPackShadowScale, 2s, ease, 0s, infinite, normal, forwards)
+
+.a_pauseInfoPackPaperContainer
+  +animation(infoPackFloatToTop, .5s, ease, 0s, 1, normal, forwards)
+
+.a_pauseInfoPackShadow
+  +animation(infoPackShadowScaleDown, .5s, ease, 0s, 1, normal, forwards)
+
+$teamPicHeight: 400px
+$teamItemOverlayHeight: $teamPicHeight*.4
+$teamItemOverlayTop: $teamPicHeight*.6
+
+.infoSecondContainer
+  width: 100%
+  height: auto
+  color: #000
+  padding: 80px
+  +flex-parent(column, nowrap, flex-start, center)
+  @media only screen and (max-width: $small)
+    padding: 40px 20px 40px 20px
+  .infoSecondTitle
+    font-family: $HeaderBold
+    padding: 40px 80px 40px 80px
+    border: 8px solid #000
+    font-size: 4em
+    text-align: center
+    @media only screen and (max-width: $small)
+      font-size: 3em
+    @media only screen and (max-width: $very-small)
+      font-size: 2.5em
+      padding: 20px 40px 20px 40px
+      border: 6px solid #000
+  .infoSecondTeamContainer
+    +flex-parent(row, wrap, center, center)
+    width: auto
+    height: auto
+    padding-top: 80px
+    @media only screen and (max-width: $small)
+      padding-top: 40px
+    .teamItem
+      height: auto
+      width: 300px
+      margin: 25px
+      border-bottom: 5px solid #000
+      padding-bottom: 10px
+      .teamPicture
+        width: 100%
+        height: $teamPicHeight
+        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale")
+        filter: gray
+        -webkit-filter: grayscale(100%)
+        background-repeat: no-repeat
+        background-position: top center
+        background-size: 100%
+        transition: .5s ease
+        transform-origin: bottom right
+      .teamD
+        padding-top: 15px
+        width: 100%
+        .teamName
+          font-family: $HeaderBold
+          font-size: 1.4em
+          width: 100%
+        .teamDescription
+          padding-top: 5px
+          width: 100%
+    .teamItemOverlay
+      background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,.8) 100%)
+      background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,.8) 100%)
+      background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,.8) 100%)
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 )
+      height: $teamItemOverlayHeight
+      width: 100%
+      top: $teamItemOverlayTop
+      position: absolute
+      z-index: 10
+      pointer-events: none
+      +flex-parent(column, nowrap, flex-end, center)
+      color: #fff
+      font-family: $Header
+      font-size: .9em
+      opacity: 0
+      transition: .5s
+      .TIOItem
+        height: auto
+        width: 100%
+        padding: 5px 10px 5px 10px
+        .smallTwitterIcon, .smallEmailIcon
+          height: 15px
+          float: left
+          width: 15px
+          margin-right: 5px
+        .smallEmailIcon
+          width: 14px
+          margin-right: 7px
+      .TIOItem a
+        text-decoration: none
+        color: #fff
+        pointer-events: all
+        transition: .5s
+        &:hover, &:focus
+          background: $palette-7
+          color: #fff
+      .publicContainer
+        +flex-parent(row, nowrap, space-between, center)
+        padding: 5px 10px 10px 10px
+      .fingerprint
+        font-family: 'Share Tech Mono', $din
+        font-size: .9em
+        text-transform: uppercase
+        text-align: right
+        pointer-events: all
+      .publicContainer a
+        background: #fff
+        border-radius: 2px
+        padding: 5px
+        color: #000
+        text-align: center
+        width: 35%
+        pointer-events: all
+        height: auto
+        transition: .5s
+        &:hover, &:focus
+          background: $palette-7
+          color: #fff
+
+#teamPicZack
+  background-image: url('assets/imgs/zack_juhasz.jpg')
+#teamPicJoe
+  background-image: url('assets/imgs/joe_nguyen.jpg')
+#teamPicPachia
+  background-image: url('assets/imgs/pachia_cha.jpg')
+#teamPicArya
+  background-image: url('assets/imgs/arya_rashid.jpg')
+#teamPicShan
+  background-image: url('assets/imgs/shan_kern.jpg')
+#teamPicEllis
+  background-image: url('assets/imgs/ellis_berry.jpg')
+#teamPicViv
+  background-image: url('assets/imgs/viv_levine.jpg')
+#teamPicBill
+  background-image: url('assets/imgs/bill_juhasz.jpg')
+#teamPicNyx
+  background-image: url('assets/imgs/nyx_the_cat.jpg')
+
+.infoThirdContainer
+  width: 100%
+  background: #333
+  height: 90vh
+  @media only screen and (max-width: $very-small)
+    height: auto
+  .mapOverlay
+    +flex-parent(column, nowrap, center, center)
+    width: auto
+    padding: 40px
+    background: #000
+    color: #fff
+    height: 90vh
+    position: absolute
+    right: 0
+    z-index: 40
+    @media only screen and (min-width: $medium)
+      padding: 40px 5vw 40px 5vw
+    @media only screen and (max-width: $very-small)
+      height: 100%
+      padding: 40px 20px 40px 20px
+      width: 100%
+    .aboveTime
+      width: 80%
+      font-family: $HeaderBold
+      font-size: 1.4em
+      padding: 0 0 10px 0
+      border-bottom: 2px solid #fff
+      @media only screen and (min-width: $medium)
+        font-size: 2.5em
+        width: 100%
+    .timeContainer
+      padding: 10px 0 0 0
+      font-family: $HeaderBold
+      font-size: 2.5em
+      width: 80%
+      @media only screen and (min-width: $medium)
+        font-size: 4em
+        width: 100%
+    .addressBlock
+      padding: 10px 0 0 0
+      line-height: 1.6
+      width: 80%
+      & a
+        color: #fff
+        text-decoration: none
+        font-family: $dinBold
+        transition: .5s
+      & a:hover, & a:focus
+        background: $palette-7
+      @media only screen and (min-width: $medium)
+        font-size: 1.5em
+        width: 100%
+    .sayHelloTitle
+      width: 80%
+      font-family: $HeaderBold
+      font-size: 1.4em
+      padding: 80px 0 10px 0
+      @media only screen and (min-width: $medium)
+        font-size: 2em
+        width: 100%
+    .sayHello
+      padding: 5px 0 40px 0
+      line-height: 1.6
+      width: 80%
+      & a
+        color: #fff
+        text-decoration: none
+        font-family: $dinBold
+        transition: .5s
+      & a:hover, & a:focus
+        background: $palette-7
+      @media only screen and (min-width: $medium)
+        font-size: 1.5em
+        width: 100%
+    .infoSocialMediaContainer
+      +flex-parent(row, nowrap, flex-start, center)
+      width: 100%
+      @media only screen and (max-width: $very-small)
+        +flex-parent(row, nowrap, center, center)
+      img
+        height: 50px
+        width: 50px
+        padding: 2px
+        margin: 0 5px 0 5px
+        transition: .5s
+        border: 4px solid #fff
+        &:hover, &:focus
+          +transform(scale(.9, .9))
+        @media only screen and (max-width: $very-small)
+          border: 2px solid #fff
+          height: 40px
+          width: 40px
+  .tenkivMapContainer
+    width: 100%
+    height: 100%
+    z-index: 2
+    @media only screen and (max-width: $very-small)
+      display: none
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

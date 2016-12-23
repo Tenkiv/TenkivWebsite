@@ -1,0 +1,12 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 45">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>email_icon</title>
+  <polygon class="cls-1" points="0 0 33 19.5 66 0 0 0"/>
+  <path class="cls-1" d="M17,37.88V66.58A7.42,7.42,0,0,0,24.42,74H75.58A7.42,7.42,0,0,0,83,66.58V37.88L50,57.38Z" transform="translate(-17 -29)"/>
+</svg>

@@ -1,0 +1,28 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "deploy",
+    "redirects": [
+      {"source" : "/info",
+      "destination" : "/info.html",
+      "type" : 301},
+      {"source" : "/about",
+      "destination" : "/about.html",
+      "type" : 301},
+      {"source" : "/control",
+      "destination" : "/control.html",
+      "type": 301},
+      {"source" : "/tekdaqc",
+      "destination" : "/control.html",
+      "type" : 301},
+      {"source" : "/water",
+      "destination" : "/index.html",
+      "type" : 301},
+      {"source" : "/blog",
+      "destination" : "http://blog.tenkiv.com",
+      "type": 301}
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .fillColor {
+      fill: #fff
+      }
+    </style>
+  </defs>
+  <title>f_gplus_icon</title>
+  <g>
+    <polygon class="fillColor" points="87.02 46.01 79 46.01 79 38.1 73.29 38.1 73.29 46.01 65.16 46.01 65.16 51.72 73.29 51.72 73.29 59.74 79 59.74 79 51.72 87.02 51.72 87.02 46.01"/>
+    <path class="fillColor" d="M60.41,44.91h-23V55H50.5a13.48,13.48,0,1,1-3.86-15.3l6.77-6.73a23,23,0,1,0,7,12Z"/>
+  </g>
+</svg>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tenkiv - Sustainable Water Purification, Filtration and Desalination</title>
+    <meta name="description" content="Tenkiv designs, builds, and implements advanced energy systems with the goal of democratizing sustainable water and energy access. Our technology is unique— with a single, modular solar thermal system we can handle energy acquisition, distribution, storage, and conversion while remaining cost competitive with fossil fuels."/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-28992902-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+<script>
+    function imageLoaded(img) {
+        if ((" " + img.className + " ").indexOf(" " + 'loaded' + " ") > -1) {
+            return true;
+        } else {
+            img.className += ' loaded';
+        }
+    }
+</script>
+
+<div class="nFixed">
+    <a href="index.html">
+        <div class="nLogoContainer">
+            <img src="assets/imgs/logo.svg">
+        </div>
+    </a>
+    <label class="nHamburger" for="navToggle"></label>
+</div>
+<input type="checkbox" id="navToggle">
+<div class="nOverlay">
+    <div class="nClose"></div>
+    <a href="index.html" class="nItem">water</a>
+    <a href="control.html" class="nItem">control</a>
+    <a href="about.html" class="nItem">about</a>
+    <a href="http://tenkiv.tumblr.com" class="nItem">blog</a>
+</div>
+
+<div class="section waterFirst">
+    <video autoplay loop muted poster="assets/imgs/water_img.jpg" class="fullscreenVideo">
+        <source src="assets/imgs/water.mp4" type="video/mp4">
+        <source src="assets/imgs/water.webm" type="video/webm">
+    </video>
+
+    <div class="backgroundImgOverlay waterFirstOverlay">
+        <div class="waterFirstTypedText">
+            <span class="typedText"></span>
+            <span class="cursor">|</span>
+        </div>
+        <div class="waterBottomContainer">
+            <div class="challengeAcceptedText">
+                Challenge Accepted
+            </div>
+            <div class="CAJoiningLineTop"></div>
+            <svg class="waterTopSvg" xmlns="http://www.w3.org/2000/svg" width="122.79" height="122.79" viewBox="0 0 122.79 122.79">
+                <path vector-effect="non-scaling-stroke" class="waterTopSvgLine" id="waterTopSvgCircleLeft" d="M100,143.61a56.39,56.39,0,0,0,0,112.79" transform="translate(-38.61 -138.61)"/>
+                <path vector-effect="non-scaling-stroke" class="waterTopSvgLine" id="waterTopSvgCircleRight" d="M100,143.61a56.39,56.39,0,1,1,0,112.79" transform="translate(-38.61 -138.61)"/>
+                <polyline vector-effect="non-scaling-stroke" class="waterTopSvgLine" id="waterTopSvgCheckMark" points="38.46 65.43 57.64 86.76 85.35 40.67"/>
+            </svg>
+            <div class="CAJoiningLineBottom"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="waterWrapper">
+<div class="section waterSecond">
+    <div class="waterSecondMidContainer">
+        <div class="wsItemContainer">
+            <img class="wsItemImg" src="assets/imgs/globeSvg.svg">
+            <div class="wsItemTitle">
+                The Globe
+            </div>
+            <div class="wsItemStat">
+                <span class="bold">2.5 billion</span> people across the globe lack access to clean water.
+            </div>
+        </div>
+        <div class="wsItemContainer">
+            <img class="wsItemImg" src="assets/imgs/afghanistanSvg.svg">
+            <div class="wsItemTitle">
+                Developing Nations
+            </div>
+            <div class="wsItemStat">
+                In places like Afghanistan, lack of access to water sanitation leads to a <span class="bold">1 in 5 child mortality rate</span>.
+            </div>
+        </div>
+        <div class="wsItemContainer">
+            <img class="wsItemImg" src="assets/imgs/californiaSvg.svg">
+            <div class="wsItemTitle">
+                California
+            </div>
+            <div class="wsItemStat">
+                <span class="bold">98%</span> of California is experiencing severe drought, placing major stress on our water infrastructure.
+            </div>
+        </div>
+    </div>
+    <div class="waterSecondBottom">
+        Cleaning water requires a <span class="bold">lot</span> of power!
+    </div>
+</div>
+
+<div class="section sunSection">
+    <div class="sunSectionForeground">
+        <div class="svgTextContainer sunText">
+            Solar energy available on earth.
+        </div>
+        <div class="earthContainer">
+            <div class="smogEarthContainer">
+                <img class="smogEarthSVG" src="assets/imgs/smog_earth.svg">
+            </div>
+            <div class="svgTextContainer earthText">
+                Non-Solar energy available on earth.
+            </div>
+        </div>
+        <div class="svgTextContainer sunBottomText">
+            Seem obvious? We thought so too.
+        </div>
+    </div>
+    <img class="sunSVG" src="assets/imgs/sun.svg">
+</div>
+
+<div class="section waterThird">
+    <div class="waterThirdTitle">
+        The Tenkiv Nexus
+    </div>
+    <div class="waterThirdTagline">
+        The <a href="info.html#section-3" class="bold">Tenkiv Nexus</a> is a fully modular renewable energy system. It uses heat from the sun in order to power anything for 1/13th the cost of existing solar panels and 1/5th the cost of fossil fuels without any subsidies. It’s the breakthrough the world’s been waiting for that finally enables us to truly utilize the most abundant source of power available on earth: the sun.
+        <br><br>
+        We’ve already started deployment of the Tenkiv Nexus for water purification, but over time we’ll replace more and more of the world's dying energy infrastructure with this new, more powerful, cost-effective, and completely clean energy nexus.
+    </div>
+    <div class="waterDiagramContainer">
+        <svg class="waterDiagram" onload="waterDiagramLoaded(this)" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960.59 674.02">
+            <line class="dashedLine waterInputToxic" x1="152.03" x2="236.45" y1="426.2" y2="426.2"/>
+            <line class="dashedLine waterInputRiver" x1="152.03" x2="236.45" y1="85.41" y2="85.41"/>
+
+            <line class="dashedLine waterInputToxic" x1="236.45" x2="236.45" y1="426.2" y2="259.81"/>
+            <line class="dashedLine waterInputRiver" x1="236.45" x2="236.45" y1="90.84" y2="251.81"/>
+
+            <line class="dashedLine waterInputOcean" x1="152.03" x2="374.49" y1="255.81" y2="255.81"/>
+            <line class="dashedLine waterInputOcean" x1="374.49" x2="374.49" y1="261.04" y2="292.77"/>
+
+            <line class="dashedLine cleanWater" x1="397.74" y1="421.87" x2="397.74" y2="552.42"/>
+            <line class="dashedLine cleanWater" x1="418.23" y1="533.44" x2="474.19" y2="533.44"/>
+
+            <!--module to tank-->
+            <line class="dashedLine modHot" x1="473.21" x2="530.78" y1="355.21" y2="355.21"/>
+            <line class="dashedLine modHot" x1="532.78" x2="532.78" y1="358.26" y2="382.77"/>
+            <line class="dashedLine modHot" x1="534.78" x2="600.78" y1="385.77" y2="385.77"/>
+
+            <!--panel to module-->
+            <line class="dashedLine hot" x1="445.32" x2="370.53" y1="113.86" y2="113.86"/>
+            <line class="dashedLine hot" x1="368.45" x2="368.45" y1="116.92" y2="140.53"/>
+            <line class="dashedLine hot" x1="371.99" x2="395.73" y1="138.96" y2="121.15"/>
+            <line class="dashedLine hot" x1="414.49" x2="435.06" y1="107.07" y2="91.56"/>
+            <line class="dashedLine hot" x1="436.93" x2="436.93" y1="100.04" y2="107.25"/>
+            <line class="dashedLine hot" x1="436.93" x2="436.93" y1="172.87" y2="293.23"/>
+            <line class="dashedLine hot" x1="583.85" x2="509.1" y1="11.52" y2="11.52"/>
+            <line class="dashedLine hot" x1="505.78" x2="505.78" y1="13.52" y2="36.61"/>
+            <line class="dashedLine hot" x1="505.49" x2="484.22" y1="39.51" y2="55.53"/>
+            <line class="dashedLine hot" x1="465.35" x2="439.5" y1="69.7" y2="88.85"/>
+            <line class="dashedLine hot" x1="515.13" x2="440.26" y1="62.56" y2="62.56"/>
+            <line class="dashedLine hot" x1="436.93" x2="436.93" y1="65.55" y2="86.98"/>
+
+            <!--tank to panel-->
+            <line class="dashedLine modHot" x1="693.45" x2="794.78" y1="405.39" y2="405.39"/>
+            <line class="dashedLine modHot" x1="796.78" x2="796.78" y1="403.35"y2="309.85"/>
+            <line class="dashedLine modHot" x1="799.83" x2="880.45" y1="307.85" y2="307.85"/>
+            <line class="dashedLine modHot" x1="882.45" x2="882.45" y1="304.86" y2="144.0"/>
+            <line class="dashedLine modHot" x1="880.45" x2="828.38" y1="106.93" y2="106.93"/>
+            <line class="dashedLine modHot" x1="882.45" x2="882.45" y1="129.56" y2="109.93"/>
+            <line class="dashedLine modHot" x1="811.86" x2="760.71" y1="158.04" y2="158.04"/>
+            <line class="dashedLine modHot" x1="813.95" x2="813.95" y1="185.58" y2="161.26"/>
+            <line class="dashedLine modHot" x1="880.01" x2="818.43" y1="137.22" y2="183.1"/>
+            <line class="dashedLine modHot" x1="948.21" x2="898.3" y1="55.82" y2="55.82"/>
+            <line class="dashedLine modHot" x1="951.28" x2="951.28" y1="81.78" y2="58.12"/>
+            <line class="dashedLine modHot" x1="884.9" x2="949.78" y1="133.6" y2="85"/>
+
+            <polyline class="solidLine"
+                      points="394.5 154.33 394.5 171.92 514.06 171.92 514.06 154.33 394.5 154.33 463.31 103.22 582.87 103.22 514.06 154.33"/>
+            <polyline class="solidLine"
+                      points="514.06 154.33 514.06 171.92 633.62 171.92 633.62 154.33 514.06 154.33 582.87 103.22 702.42 103.22 633.62 154.33"/>
+            <polyline class="solidLine" points="779.25 152.54 821.98 120.81 821.98 103.22"/>
+            <polyline class="solidLine"
+                      points="633.62 154.33 633.62 171.92 753.17 171.92 753.17 154.33 633.62 154.33 702.42 103.22 821.98 103.22 753.17 154.33 753.17 171.92 764.44 163.54"/>
+            <polyline class="solidLine" points="582.87 103.22 463.31 103.22 532.12 52.11 651.67 52.11 582.87 103.22"/>
+            <polyline class="solidLine" points="702.42 103.22 582.87 103.22 651.67 52.11 771.23 52.11 702.42 103.22"/>
+            <polyline class="solidLine" points="848.06 101.43 890.78 69.69 890.78 52.11"/>
+            <polyline class="solidLine"
+                      points="821.98 120.81 821.98 103.22 702.42 103.22 771.23 52.11 890.78 52.11 821.98 103.22 821.98 120.81 833.25 112.43"/>
+            <polyline class="solidLine" points="651.67 52.11 532.12 52.11 600.92 1 720.48 1 651.67 52.11"/>
+            <polyline class="solidLine" points="771.23 52.11 651.67 52.11 720.48 1 840.03 1 771.23 52.11"/>
+            <polyline class="solidLine" points="917.27 50.02 959.59 18.58 959.59 1"/>
+            <polyline class="solidLine"
+                      points="890.78 69.69 890.78 52.11 771.23 52.11 840.03 1 959.59 1 890.78 52.11 890.78 69.69 902.06 61.32"/>
+
+            <ellipse class="solidLine" cx="649.9" cy="351.29" rx="39.49" ry="8.41"/>
+            <line class="solidLine" x1="689.39" y1="394.42" x2="689.39" y2="351.29"/>
+            <path class="solidLine" d="M628.34,363.5v88.18c0,4.65,17.68,8.41,39.49,8.41s39.49-3.77,39.49-8.41V428.54" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M628.34,375.49c0,4.65,17.68,8.41,39.49,8.41s39.49-3.77,39.49-8.41" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M628.34,439.44c0,4.65,17.68,8.41,39.49,8.41,21.13,0,38.38-3.53,39.44-8" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M708.73,406.62h-6.79c-2.58,0-4.68,4.91-4.68,11s2.09,11,4.68,11h6.79" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M712.78,423.08c-0.81,3.26-2.32,5.46-4,5.46-2.58,0-4.68-4.91-4.68-11s2.09-11,4.68-11c1.73,0,3.24,2.19,4,5.46" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M906.28,150.12V320.2a5.5,5.5,0,0,1-5.5,5.5H820v91.9a5.5,5.5,0,0,1-5.5,5.5H710.17c-1,0-1.75-2.46-1.75-5.5s0.78-5.5,1.75-5.5H809V320.23a5.5,5.5,0,0,1,5.5-5.5l80.77,0V158.32" transform="translate(-17.93 -12.21)"/>
+
+            <line class="solidLine" x1="819.56" y1="175.29" x2="877.37" y2="132.35"/>
+            <polyline class="solidLine" points="510.82 67.93 442.43 67.93 442.43 83.76"/>
+            <path class="solidLine" d="M449.36,104.14V74.64a5.5,5.5,0,0,1,5.5-5.5h88.7" transform="translate(-17.93 -12.21)"/>
+            <line class="solidLine" x1="422.69" y1="108.04" x2="476.69" y2="67.93"/>
+            <path class="solidLine" d="M474.75,120.25h-88.7a5.5,5.5,0,0,0-5.5,5.5v28.18a5.5,5.5,0,0,0,8.78,4.42l36.48-27.1"
+                  transform="translate(-17.93 -12.21)"/>
+            <polyline class="solidLine" points="373.63 136.67 373.63 130.79 373.63 119.04 441.83 119.04"/>
+            <line class="solidLine" x1="442.43" y1="79.67" x2="458.24" y2="67.93"/>
+            <line class="solidLine" x1="404.24" y1="108.04" x2="431.43" y2="87.84"/>
+            <line class="solidLine" x1="373.63" y1="130.79" x2="389.43" y2="119.04"/>
+            <path class="solidLine" d="M612.36,18h-88.7a5.5,5.5,0,0,0-5.5,5.5V48.94L491,69.14"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M509.43,69.14l17.52-13a5.49,5.49,0,0,0,2.22-4.42V29h68.39"
+                  transform="translate(-17.93 -12.21)"/>
+            <line class="solidLine" x1="442.43" y1="108.04" x2="442.43" y2="93.38"/>
+            <line class="solidLine" x1="431.43" y1="101.55" x2="431.43" y2="108.04"/>
+            <rect class="solidLine" x="341.49" y="311.33" width="112.5" height="105"/>
+            <polyline class="solidLine" points="469 366.17 469 401.32 453.99 416.33"/>
+            <polyline class="solidLine" points="447.99 296.32 469 296.32 469 344.26"/>
+            <line class="solidLine" x1="385.05" y1="296.32" x2="426" y2="296.32"/>
+            <polyline class="solidLine" points="341.49 311.33 356.5 296.32 363.92 296.32"/>
+            <line class="solidLine" x1="453.99" y1="311.33" x2="469" y2="296.32"/>
+            <path class="solidLine" d="M488.9,356.47h-6.79c-2.58,0-4.68,4.91-4.68,11s2.09,11,4.68,11h6.79"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M492.94,372.92c-0.81,3.26-2.32,5.46-4,5.46-2.58,0-4.68-4.91-4.68-11s2.09-11,4.68-11c1.73,0,3.24,2.19,4,5.46"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M628.34,387h-3.08c-2.58,0-4.68,4.91-4.68,11s2.09,11,4.68,11h3.08"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M443.9,307.3v6.79c0,2.58,4.91,4.68,11,4.68s11-2.09,11-4.68V307.3"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M460.36,303.25c3.26,0.81,5.46,2.32,5.46,4,0,2.58-4.91,4.68-11,4.68s-11-2.09-11-4.68c0-1.73,2.19-3.24,5.46-4"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M381.46,307.3v6.79c0,2.58,4.91,4.68,11,4.68s11-2.09,11-4.68V307.3"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M397.91,303.25c3.26,0.81,5.46,2.32,5.46,4,0,2.58-4.91,4.68-11,4.68s-11-2.09-11-4.68c0-1.73,2.19-3.24,5.46-4"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M906.3,141.29V119.14a5.5,5.5,0,0,0-5.5-5.5H846.52c-1,0-1.75,2.46-1.75,5.5s0.78,5.5,1.75,5.5H895.3v22.68"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M906.3,136.38l57.81-42.94V73.53H915.32c-1,0-1.75-2.46-1.75-5.5s0.78-5.5,1.75-5.5h54.28a5.5,5.5,0,0,1,5.5,5.5V96.21a5.49,5.49,0,0,1-2.22,4.41L835.27,202.85a5.5,5.5,0,0,1-8.78-4.41V175.75H777.71c-1,0-1.75-2.46-1.75-5.5s0.78-5.5,1.75-5.5H832a5.5,5.5,0,0,1,5.5,5.5V193"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M449.36,184.13v122c0,1,2.46,1.75,5.5,1.75s5.5-.78,5.5-1.75v-122"
+                  transform="translate(-17.93 -12.21)"/>
+            <line class="solidLine" x1="431.43" y1="119.04" x2="431.43" y2="126.91"/>
+            <path class="solidLine" id="moduleM"
+                  d="M410.84,388.42L402.49,372v23.22c0,2.34-.07,3.17-0.68,4.39a5.18,5.18,0,0,1-8.71,0c-0.61-1.22-.68-2.05-0.68-4.39V356.35c0-2.2.29-3.64,1.51-4.86a4.59,4.59,0,0,1,3.38-1.37,4.93,4.93,0,0,1,3,.83,8.45,8.45,0,0,1,2.56,3.1l12.81,24.41L428.48,354a8.45,8.45,0,0,1,2.56-3.1,4.93,4.93,0,0,1,3-.83,4.59,4.59,0,0,1,3.38,1.37c1.22,1.22,1.51,2.66,1.51,4.86v38.84c0,2.34-.07,3.17-0.68,4.39a5.18,5.18,0,0,1-8.71,0c-0.61-1.22-.68-2.05-0.68-4.39V372l-8.35,16.45c-1.26,2.48-2.45,3.53-4.82,3.53S412.1,390.9,410.84,388.42Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M260.21,97.61a5.5,5.5,0,0,0-5.5-5.5h-88.5c-1,0-1.75,2.46-1.75,5.5s0.78,5.5,1.75,5.5h83V262.52h-83c-1,0-1.75,2.46-1.75,5.5s0.78,5.5,1.75,5.5h83v159.4h-83c-1,0-1.75,2.46-1.75,5.5s0.78,5.5,1.75,5.5h88.5a5.5,5.5,0,0,0,5.5-5.5V273.52H386.92v32.58c0,1,2.46,1.75,5.5,1.75s5.5-.78,5.5-1.75V268a5.5,5.5,0,0,0-5.5-5.5H260.21V97.61Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M621.21,403.48H550.88a5.5,5.5,0,0,1-5.5-5.5V372.92H489.77c-1,0-1.75-2.46-1.75-5.5s0.78-5.5,1.75-5.5h61.11a5.5,5.5,0,0,1,5.5,5.5v25.06h64.83"
+                  transform="translate(-17.93 -12.21)"/>
+
+            <path class="solidLine" d="M164.78,86.66H158c-2.58,0-4.68,4.91-4.68,11s2.09,11,4.68,11h6.79"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M168.82,103.12c-0.81,3.26-2.32,5.46-4,5.46-2.58,0-4.68-4.91-4.68-11s2.09-11,4.68-11c1.73,0,3.24,2.19,4,5.46"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M164.78,449.37H158c-2.58,0-4.68-4.91-4.68-11s2.09-11,4.68-11h6.79"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M168.82,432.91c-0.81-3.26-2.32-5.46-4-5.46-2.58,0-4.68,4.91-4.68,11s2.09,11,4.68,11c1.73,0,3.24-2.19,4-5.46"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M164.78,279H158c-2.58,0-4.68-4.91-4.68-11s2.09-11,4.68-11h6.79"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M168.82,262.52c-0.81-3.26-2.32-5.46-4-5.46-2.58,0-4.68,4.91-4.68,11s2.09,11,4.68,11c1.73,0,3.24-2.19,4-5.46"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M158.88,257.06a70.4,70.4,0,1,0,0,21.91" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M158.88,427.45a70.4,70.4,0,1,0,0,22.19" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M19,264.62s7.42,7.29,23.26-1.38c0,0,10.83,17.83,24.83,6.83,0,0,11.17,15.25,26.17-1.89,0,0,8,15.72,23,4.22,0,0,12.23,8.94,23.4-4.39,0,0,8,4.69,13.74,2.35"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M32.29,286.8s8.85,5.24,18.24-2c0,0,2.25,8.41,14.72,8.41"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M90.42,294.74s6.23,0,8.5-5c0,0,3.5,5.18,9.49,3.44"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M62.28,310.74s11.25,0.52,13.67-4.83a10.06,10.06,0,0,0,11.83,6.17"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M115.34,311.19s9.75,1.13,14-6.12c0,0,3.92,6.18,12,3.09"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M141.3,290.32a8,8,0,0,0,7.23-4.37s3.66,5.5,8.21,2.19"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M37.28,309.19s-6-.6-8.35-5" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M49.49,325.82s4-.08,6-2.58a7.84,7.84,0,0,0,6.83,4"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M94.78,327.24s7.62,0.07,8.83-4c0,0,3.17,4.67,8,4" transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M137.83,217.28c-8.8-.62-11.27,7.66-11.27,12.24a11.55,11.55,0,0,0,.11,1.49,11.55,11.55,0,0,0-1.87,2.06,7,7,0,0,0-9,8h-0.13a5.09,5.09,0,1,0,3.17,9,7,7,0,0,0,8.75-.92,11.47,11.47,0,0,0,14.88-1.52,11.48,11.48,0,0,0,14.23,2"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M82.44,208.33a10,10,0,0,0-19.65,0H62.61a5.92,5.92,0,0,0-5.71,4.35,4,4,0,1,0,1.34,5.56,5.91,5.91,0,0,0,8.63.11,10,10,0,0,0,11,.29A5.92,5.92,0,1,0,82.44,208.33Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M21.06,251.2a5.56,5.56,0,0,0,4.65-2.51,5.56,5.56,0,1,0,8.92-6.61,5.56,5.56,0,0,0-4.27-9.13,5.33,5.33,0,0,0-2.4.54"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M131,219.18A16.06,16.06,0,1,0,111.66,243" transform="translate(-17.93 -12.21)"/>
+            <line class="solidLine" x1="99.68" y1="197.28" x2="99.68" y2="191.54"/>
+            <line class="solidLine" x1="86.53" y1="229.03" x2="82.47" y2="233.08"/>
+            <line class="solidLine" x1="81.09" y1="215.88" x2="75.35" y2="215.88"/>
+            <line class="solidLine" x1="86.53" y1="202.73" x2="82.47" y2="198.67"/>
+            <line class="solidLine" x1="112.83" y1="202.73" x2="114.86" y2="200.7"/>
+            <path class="solidLine"
+                  d="M67.43,252.65a4,4,0,0,0,2.92-1.4,3.92,3.92,0,0,0,3.17.51,4,4,0,1,0,2.93-4.55,4,4,0,0,0-6.94-1.91A4,4,0,1,0,67.43,252.65Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M125,415.2a8.12,8.12,0,1,0-13.18,3.23,2.49,2.49,0,0,0-.82,2.27c0.3,1.23,1.88,2,3.84,1.92a5.6,5.6,0,0,0,9.42-2.31c1.76-.87,2.82-2.24,2.52-3.48A2.49,2.49,0,0,0,125,415.2Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <circle class="solidLine" cx="114.51" cy="416.73" r="1.92" transform="translate(-113.72 26.96) rotate(-13.75)"/>
+            <circle class="solidLine" cx="121.77" cy="414.95" r="1.92" transform="translate(-113.09 28.64) rotate(-13.75)"/>
+            <path class="solidLine"
+                  d="M108.21,420.83a3.21,3.21,0,0,1,.44-2.46c-0.19-.22-0.37-0.46-0.54-0.7l-1.64-.33a2.37,2.37,0,1,0-2.63,1.37,2.37,2.37,0,1,0,1.9,2.28l2.77,0.56A2.92,2.92,0,0,1,108.21,420.83Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M136,420.71a2.36,2.36,0,0,0-2.83,2.36l-6.49-1.32-0.13.08a5.71,5.71,0,0,1-2.43,3.2l8.31,1.69a2.37,2.37,0,1,0,2.63-1.37A2.37,2.37,0,1,0,136,420.71Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M125,415.2a8.12,8.12,0,1,0-13.18,3.23,2.49,2.49,0,0,0-.82,2.27c0.3,1.23,1.88,2,3.84,1.92a5.6,5.6,0,0,0,9.42-2.31c1.76-.87,2.82-2.24,2.52-3.48A2.49,2.49,0,0,0,125,415.2Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M110.52,432l6.6-5.23a5.71,5.71,0,0,1-3.63-1.72h-0.18l-5.11,4.05a2.37,2.37,0,1,0-.65,2.9A2.37,2.37,0,1,0,110.52,432Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M135.65,412.24a2.37,2.37,0,0,0-3.33-.38,2.37,2.37,0,1,0-3,0L127.86,413c0,0.23-.08.45-0.13,0.68a3.21,3.21,0,0,1,1.52,2,2.93,2.93,0,0,1,.07.94l2.35-1.86A2.37,2.37,0,1,0,135.65,412.24Z"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M122.78,376.48c-4,.56-8.65,1.46-13.56,2.66-14.26,3.49-25.36,8.23-24.78,10.59s12.61,1.44,26.87-2.05a115,115,0,0,0,19.15-6.25"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M98.23,446.09c0.58,2.36,12.61,1.44,26.87-2.05s25.36-8.23,24.78-10.59"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M86,396.27c0.58,2.36,12.61,1.44,26.87-2.05,10.54-2.58,19.34-5.84,23-8.32"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M84.44,389.74L99.8,452.5c0.58,2.36,12.61,1.44,26.87-2.05s25.36-8.23,24.78-10.59l-12.48-51"
+                  transform="translate(-17.93 -12.21)"/>
+            <circle class="solidLine" cx="101.51" cy="476.4" r="2.33"/>
+            <circle class="solidLine" cx="104.84" cy="466.43" r="4.03"/>
+            <circle class="solidLine" cx="32.4" cy="454.16" r="1.89"/>
+            <circle class="solidLine" cx="38.14" cy="444.14" r="1.96"/>
+            <circle class="solidLine" cx="32.34" cy="420.13" r="3.83"/>
+            <circle class="solidLine" cx="39.37" cy="410.31" r="1.86"/>
+            <circle class="solidLine" cx="59.64" cy="372.71" r="2.24"/>
+            <circle class="solidLine" cx="63.58" cy="360.95" r="3.94"/>
+            <circle class="solidLine" cx="13.41" cy="395.83" r="2.23"/>
+            <circle class="solidLine" cx="74.85" cy="437.43" r="2.25"/>
+            <circle class="solidLine" cx="7.01" cy="443.1" r="3"/>
+            <circle class="solidLine" cx="134.41" cy="438.27" r="2.43"/>
+            <circle class="solidLine" cx="131.53" cy="448.11" r="2.02"/>
+            <path class="solidLine" d="M158.88,86.66a70.4,70.4,0,1,0,0,21.91" transform="translate(-17.93 -12.21)"/>
+            <ellipse class="solidLine" cx="85.67" cy="134.24" rx="12.13" ry="5.75"/>
+            <ellipse class="solidLine" cx="32.79" cy="132.49" rx="12.13" ry="5.75"/>
+            <ellipse class="solidLine" cx="77.21" cy="143.6" rx="9.46" ry="4.49"/>
+            <ellipse class="solidLine" cx="52.71" cy="136.85" rx="9.46" ry="4.49"/>
+            <ellipse class="solidLine" cx="115.46" cy="128.35" rx="9.46" ry="4.49"/>
+            <ellipse class="solidLine" cx="99.67" cy="128.36" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="78.83" cy="125.53" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="104.54" cy="134.11" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="91.82" cy="142.75" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="85.44" cy="149.62" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="49.69" cy="143.75" rx="3.97" ry="1.88"/>
+            <path class="solidLine" d="M60.06,161.45H60.5c2.19,0,4-.84,4-1.88s-1.78-1.88-4-1.88-4,.84-4,1.88"
+                  transform="translate(-17.93 -12.21)"/>
+            <ellipse class="solidLine" cx="19.24" cy="127.54" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="41.24" cy="125.04" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="61.07" cy="130.7" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="69.9" cy="131.37" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="68.57" cy="127.04" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="16.38" cy="122.99" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="25.45" cy="124.11" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="89.4" cy="125.7" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="104.4" cy="123.37" rx="3.97" ry="1.88"/>
+            <ellipse class="solidLine" cx="125.57" cy="123.54" rx="3.97" ry="1.88"/>
+            <path class="solidLine"
+                  d="M138.88,147.66a8.64,8.64,0,0,0-5.29-1.47c-3.35,0-6.06,1.29-6.06,2.88s2.71,2.88,6.06,2.88"
+                  transform="translate(-17.93 -12.21)"/>
+            <ellipse class="solidLine" cx="104.1" cy="140.97" rx="7.87" ry="3.73"/>
+            <ellipse class="solidLine" cx="68.29" cy="136.99" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="50.29" cy="128.45" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="61.04" cy="143.36" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="53.67" cy="148.86" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="39.17" cy="141.61" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="66.29" cy="149.24" rx="6.06" ry="2.88"/>
+            <ellipse class="solidLine" cx="76.92" cy="152.61" rx="6.06" ry="2.88"/>
+            <path class="solidLine" d="M86.53,167.45c0-1.59-2.71-2.87-6.06-2.87-2.62,0-4.86.79-5.7,1.9"
+                  transform="translate(-17.93 -12.21)"/>
+            <ellipse class="solidLine" cx="95.29" cy="147.49" rx="6.06" ry="2.88"/>
+            <line class="solidLine" x1="16.59" y1="65.39" x2="34.31" y2="65.39"/>
+            <line class="solidLine" x1="88.93" y1="89.57" x2="106.65" y2="89.57"/>
+            <line class="solidLine" x1="129.54" y1="82.57" x2="135.54" y2="82.57"/>
+            <line class="solidLine" x1="55.8" y1="71.57" x2="64.66" y2="71.57"/>
+            <line class="solidLine" x1="101.57" y1="49.57" x2="117.29" y2="49.57"/>
+            <line class="solidLine" x1="38.14" y1="25.58" x2="47" y2="25.58"/>
+            <line class="solidLine" x1="61.86" y1="100.57" x2="70.72" y2="100.57"/>
+            <line class="solidLine" x1="3.56" y1="101.52" x2="12.42" y2="101.52"/>
+            <line class="solidLine" x1="10.84" y1="50.41" x2="19.7" y2="50.41"/>
+            <line class="solidLine" x1="28.41" y1="112.54" x2="46.13" y2="112.54"/>
+
+            <g id="fish">
+                <path class="solidLine"
+                      d="M61.56,56.91c0,13.54,5.79,2.7,5.79,2.7,1.69-.68,3.71,1.07,3.71,1.07a2.81,2.81,0,0,0,.74,3.6c2.5,2.17,5.68-.56,5.68-0.56l2,0.84s-1.1,3.62,1.7,3.86C86.59,68.88,88,65,88,65c8.83-1.75,10-8.12,10-8.12s0.51-3.63-8.21-7.26a7.79,7.79,0,0,0-6.92-5.44c-4.65-.47-3.43,5-3.43,5l-2,.84s-6-2.87-7.1-.93a3.26,3.26,0,0,0,.69,4s-2,1.74-3.71,1.07C67.35,54.21,61.56,44.95,61.56,56.91Z"
+                      transform="translate(-17.93 -12.21)"/>
+                <path class="solidLine" d="M80.72,56.32c-1.13,0-3.44.91-3.44,2s2.32,2,3.44,2"
+                      transform="translate(-17.93 -12.21)"/>
+                <line class="solidLine" x1="74.73" y1="42.11" x2="72.48" y2="42.11"/>
+            </g>
+
+            <circle class="solidLine" cx="83.92" cy="37.86" r="1.52"/>
+            <circle class="solidLine" cx="97.79" cy="22.46" r="1.52"/>
+            <circle class="solidLine" cx="88.33" cy="27.74" r="2.89"/>
+            <path class="solidLine" d="M107.33,136s4.32-8.21,2.42-14.21,0.48-9.5.48-9.5,1,7.25,3,10.5,2,11.08.94,15.38"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M114.63,127.69s3.88-5.12,3.74-10.87a17.22,17.22,0,0,1,.92,12.38c-2.06,7-.92,6.38-0.92,6.38"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M109.15,131.5s-2.73-5.05-2.89-13.43c0,0-3.67,5.88-1,18.25"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M100.32,135.42s-0.23-7.49.58-10.67a13,13,0,0,0-4.15,10.12"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M133.39,136.07s1.83-7.37,1.21-12c0,0,3.64,2.37,2.53,12.36"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M137.13,129.74s1.09-5.54,2.4-10.29a33.18,33.18,0,0,1,2.69-7.12s-1.75,10.21-1.25,14.92a32.22,32.22,0,0,1,.18,7"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M145.85,134.23s3.87-6.28,4-11.78c0,0,1,1.76,1.26,8.37"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M81.89,141.63a36.47,36.47,0,0,1,.7-14.43S79,131.86,79,141"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M77.28,141.63s-1.43-7.3.88-12.68a13.76,13.76,0,0,0,0-10.37s-2.67,10.38-4.43,12.5-2.36,7.13-2.36,7.13"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M66.41,137.91s-0.81-7.69,3.06-11.7c0,0-1.12,7.67.56,11.7"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M48.22,139.07s4.13-4.75,2.81-10a14.79,14.79,0,0,1,2.66,10.05"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M41.13,134.77a28.89,28.89,0,0,1,0-12.32,132.19,132.19,0,0,0,2.25-13.37s-8.13,11.78-7.59,24.38"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine" d="M33.81,133.33a38.26,38.26,0,0,1,1-13.85s-5.94,6.84-3.75,14.62"
+                  transform="translate(-17.93 -12.21)"/>
+            <circle class="solidLine" cx="109.6" cy="78.48" r="2.37"/>
+            <circle class="solidLine" cx="42.57" cy="98.07" r="2.66"/>
+            <path class="solidLine" d="M80.91,478.65s-4.08-4.52-12.05-1.69A16.72,16.72,0,0,1,75,481"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M51.59,497.85a12.43,12.43,0,0,1,3.28-2.5c3.69-2,8.12-1.34,11.29-.38a28.26,28.26,0,0,0,18-1.3c14.71-5.91,16-16.48,16-16.48s-7-6.73-22.47-.52"
+                  transform="translate(-17.93 -12.21)"/>
+            <path class="solidLine"
+                  d="M72.63,479a40,40,0,0,0-8.73,6c-2.72,2.56-5.52,5.21-10.32,5.16-5,0-9-9.17-9-9.17s-3.7,1.5-3.86,6.93c0,0,3,4.87,7.17,4.78a10.51,10.51,0,0,0-1.17,1.71"
+                  transform="translate(-17.93 -12.21)"/>
+            <line class="solidLine" x1="73.2" y1="471.28" x2="75.96" y2="469.5"/>
+            <line class="solidLine" x1="73.54" y1="469.12" x2="75.62" y2="471.66"/>
+            <path class="solidLine" d="M88.59,491.55s-1.31,4.09-3.16,5.8-8.16,2-10.86,3.81c0,0,5.07-3.88,3.87-5.79"
+                  transform="translate(-17.93 -12.21)"/>
+
+            <g class="diagramInfoItem" id="infoItemOne">
+                <circle class="diagramCircles" cx="124.92" cy="41.79" r="18.63"/>
+                <path class="diagramNumbers" d="M142.2,62.4L142,62.16V49.91h-0.24l-1.92,1.92h-1.2l-0.24-.24v-2.4l3.36-3.36,0.48-.24h2.88l0.24,0.24V62.16l-0.24.24H142.2Z" transform="translate(-17.93 -12.21)"/>
+            </g>
+            <g class="diagramInfoItem" id="infoItemTwo">
+                <circle class="diagramCircles" cx="341.49" cy="311.03" r="18.63"/>
+                <path class="diagramNumbers" d="M365.06,331.76H353.78l-0.24-.24v-2.64l0.24-.48,4.32-3.6c2.88-2.4,3.36-3.36,3.36-4.8s-0.72-2.4-2.16-2.4c-1.92,0-2.4,1-2.4,2.4l-0.24.24h-2.88l-0.24-.24c0-2.64,1.44-5.28,5.76-5.28,3.6,0,5.52,2.4,5.52,5s-1.2,4.08-4.08,6.48l-2.88,2.4v0.24h7.2l0.24,0.24v2.4Z" transform="translate(-17.93 -12.21)"/>
+            </g>
+            <g class="diagramInfoItem" id="infoItemThree">
+                <circle class="diagramCircles" cx="636.32" cy="163.4" r="18.63"/>
+                <path class="diagramNumbers" d="M654,184.12c-3.84,0-5.76-2.4-5.76-4.8l0.24-.24h2.88l0.24,0.24c0,1,.72,1.92,2.4,1.92a2.65,2.65,0,0,0,2.88-2.88c0-1.92-1-2.88-2.4-2.88A2.1,2.1,0,0,0,653,176h-1.2l-0.24-.24v-2.16L655,170.2V170h-5.76l-0.24-.24v-2.4l0.24-.24H659l0.24,0.24v2.4l-0.24.48-3.12,2.88v0.24c2.16,0,4.32,1.92,4.32,5S658.09,184.12,654,184.12Z" transform="translate(-17.93 -12.21)"/>
+            </g>
+
+            <path class="fillCup" d="M395.56,528.9l6.53,36.05c0,2.42,6.08,4.38,13.57,4.38s13.57-2,13.57-4.38l6.53-36.05s-0.68,4.5-20.11,4.5S395.56,528.9,395.56,528.9Z" transform="translate(-17.93 -12.21)"/>
+
+            <path class="solidLine" d="M410.17,428.54V497c0,1,2.46,1.75,5.5,1.75s5.5-.78,5.5-1.75V428.54" transform="translate(-17.93 -12.21)"/>
+            <ellipse class="solidLine" cx="397.74" cy="498.8" rx="23.25" ry="4.07"/>
+            <path class="solidLine" d="M392.41,511l9.68,55c0,1.81,6.08,3.28,13.57,3.28s13.57-1.47,13.57-3.28l9.68-55" transform="translate(-17.93 -12.21)"/>
+            <!--end pipe-->
+            <line class="solidLine" x1="416.79" y1="528.02" x2="476.42" y2="528.02"/>
+            <line class="solidLine" x1="414.85" y1="539.02" x2="476.49" y2="539.02"/>
+
+            <polygon class="sparkle" points="407.41 538.79 407.47 530.6 403.98 528.96 407.82 528.62 410.59 520.9 410.53 529.1 413.81 530.7 410.18 531.08 407.41 538.79"/>
+
+            <line class="faucetWater" x1="498.35" y1="545.19" x2="498.35" y2="707.69"/>        <!--<path class="fillWater" d="M0,667.9s128,8.57,293.38,3.5c143.2-4.39,314.68-22.5,452.5-22.5,217.06,0,241.07,19,241.07,19v461.55H0Z" transform="translate(0 -12.21)"/>-->
+
+            <path class="solidLine" d="M487.26,540.23" transform="translate(0 -12.21)"/>
+            <circle class="solidLine" cx="481.84" cy="533.49" r="7.7"/>
+            <polyline class="solidLine" points="485.82 526.83 485.83 520.65 477.84 520.65 477.83 526.83"/>
+            <line class="solidLine" x1="481.84" y1="520.65" x2="481.84" y2="515.52"/>
+            <line class="solidLine" x1="476.78" y1="515.52" x2="486.9" y2="515.52"/>
+            <path class="solidLine" d="M487.26,540.23l11.12,0a5.5,5.5,0,0,1,5.5,5.5v11.7H492.82v-6.17h-5.56" transform="translate(0 -12.21)"/>
+        </svg>
+    </div>
+
+    <div class="waterDiagramMobileContainer">
+        <div class="wdmImgContainer">
+            <img src="assets/imgs/mobile_water_diagram_1.svg" id="wdmInputsImg">
+        </div>
+        <div class="wdmiContainer" id="wdmiWaterInputs">
+            <div class="wdmiTopContainer">
+                <div class="wdmiNumber">1</div>
+                <div class="wdmiTitle">Water Inputs</div>
+            </div>
+            <div class="wdmiBottom">
+                The <a href="info.html#section-3" class="bold" target="_blank"> Tenkiv Nexus</a> water filtration module can use feed water from any source. River water, ocean water, or other contaminated waters are all able to be processed using the power that our system produces.
+            </div>
+        </div>
+        <div class="wdmImgContainer">
+            <img src="assets/imgs/mobile_water_diagram_3.svg" id="wdmModuleImg">
+        </div>
+        <div class="wdmiContainer" id="wdmiModules">
+            <div class="wdmiTopContainer">
+                <div class="wdmiNumber">2</div>
+                <div class="wdmiTitle">Modules</div>
+            </div>
+            <div class="wdmiBottom">
+                The heat generated from the <a href="info.html#section-3" class="bold" target="_blank">Tenkiv Nexus</a> is routed to and from a module in order to power different types of systems.<br><br>The module can vary: heating, electricity production, refridgeration, water filtration– <a href="info.html#section-8" class="bold" target="_blank">anything</a> that requires power can be connected.
+            </div>
+        </div>
+        <div class="wdmImgContainer">
+            <img src="assets/imgs/mobile_water_diagram_5.svg" id="wdmPanelImg">
+        </div>
+        <div class="wdmiContainer" id="wdmiSystem">
+            <div class="wdmiTopContainer">
+                <div class="wdmiNumber">3</div>
+                <div class="wdmiTitle">The Tenkiv System</div>
+            </div>
+            <div class="wdmiBottom">
+                The <a href="info.html#section-3" class="bold" target="_blank">Tenkiv Nexus</a> is a scalable, modular, and clean system that uses solar thermal collectors in order to capture heat from the sun. The Nexus can then distribute the collected heat only where its needed.<br><br>Our <a href="info.html#section-2" class="bold" target="_blank">solar thermal collectors</a> are made from cost-effective materials: steel and glass. Because of their uniquely cheap cost and durability, they can be used in virtually any environment.
+            </div>
+        </div>
+        <div class="wdmImgContainer">
+            <img src="assets/imgs/mobile_water_diagram_7.svg" id="wdmTankImg">
+        </div>
+    </div>
+</div>
+
+<div class="section waterFourth">
+    <div class="bottomWaterTopText">
+        Your part starts here.
+    </div>
+    <div class="emailContainer">
+        <input type="text" class="emailInput" name="email" maxlength="99" placeholder="you@email.com">
+        <div class="submitButton">Submit</div>
+        <div class="successMessage">
+            <svg class="successMessageCheckmark" xmlns="http://www.w3.org/2000/svg" width="122.79" height="122.79" viewBox="0 0 122.79 122.79">
+                <polyline class="successMessageCheckmarkLine" vector-effect="non-scaling-stroke" points="38.46 65.43 57.64 86.76 85.35 40.67"/>
+                <circle class="successMessageCheckmarkLineCircle" vector-effect="non-scaling-stroke" cx="61.39" cy="61.39" r="56.39"/>
+            </svg>
+            <div class="successMessageText">
+                Your email has been submitted.
+            </div>
+        </div>
+        <div class="bottomWaterExplanationText">
+            Become notified when our Kickstarter goes live.
+        </div>
+    </div>
+</div>
+
+<div class="section footer">
+    <div class="footerItem footerLeft">
+        <div class="footerTitle">Get in touch.</div>
+        <div class="footerContactContainer">
+            Tenkiv, Inc.<br>
+            <a href="https://www.google.com/maps/place/820+18th+St,+Sacramento,+CA+95811/@38.5789031,-121.4843463,17z/data=!3m1!4b1!4m5!3m4!1s0x809ad0da8295642f:0x4c8991aebbca0990!8m2!3d38.5788989!4d-121.4821523" target="_blank">
+                820 18th Street<br>
+                Sacramento, CA 95811
+            </a><br><br>
+            1 916 450 9573<br>
+            <a href="mailto: hello@tenkiv.com" class="bold">hello@tenkiv.com</a>
+        </div>
+    </div>
+    <div class="footerItem footerRight">
+        <div class="socialMediaContainer">
+            <a href="https://twitter.com/Tenkiv" target="_blank"><img src="assets/imgs/f_twitter_icon.svg"></a>
+            <a href="https://plus.google.com/+Tenkiv" target="_blank"><img src="assets/imgs/f_gplus_icon.svg"></a>
+            <a href="https://www.facebook.com/Tenkiv" target="_blank"><img src="assets/imgs/f_fb_icon.svg"></a>
+            <a href="https://www.instagram.com/tenkivofficial" target="_blank"><img src="assets/imgs/f_insta_icon.svg"></a>
+            <a href="https://www.youtube.com/user/TenkivTek" target="_blank"><img src="assets/imgs/f_yt_icon.svg"></a>
+        </div>
+        <div class="footerRightText">
+            Interested in learning what Tenkiv's all about?<br>Try our <a href="info.html" class="bold">info pack</a>.
+        </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript" src="assets/libraries/scrollreveal.min.js"></script>
+<script type="text/javascript" src="assets/libraries/velocity.min.js"></script>
+<script type="text/javascript" src="assets/js/script-compiled.js"></script>
+</body>
+</html>
