@@ -254,6 +254,8 @@ $sectionSmallHeight: $sectionHeight*.75
     text-decoration: none
     color: #000
     +flex-parent(column, nowrap, center, center)
+    @media only screen and (max-width: $very-small)
+      width: 80%
   a.nItem:last-child
     border-bottom: none
 
@@ -500,7 +502,7 @@ $earthPower: .015 * $solarPower
 .sunSection
   height: auto
   +flex-parent(row, nowrap, center, center)
-  background: #000 url('assets/imgs/star_svg_bg.svg') no-repeat center fixed
+  background: #000 url('assets/imgs/star_svg_bg.svg') no-repeat center
   background-size: cover
   color: #fff
   z-index: 1
@@ -977,6 +979,7 @@ $earthPower: .015 * $solarPower
   position: relative
   background: #143082
   color: #fff
+  width: 100%
   margin: -1px 0 0 0
   padding: 120px 20px 120px 20px
   font-family: $Header
@@ -984,6 +987,8 @@ $earthPower: .015 * $solarPower
   @media only screen and (max-width: $small)
     +flex-parent(column, nowrap, center, center)
     padding: 80px 40px 80px 40px
+  @media only screen and (max-width: $very-small)
+    padding: 80px 20px 80px 20px
   .footerTitle
     font-family: $HeaderBold
     font-size: 2em
@@ -1018,9 +1023,9 @@ $earthPower: .015 * $solarPower
     +flex-parent(column, nowrap, center, center)
     .socialMediaContainer
       width: 100%
-      +flex-parent(row, nowrap, flex-end, center)
+      +flex-parent(row, wrap, flex-end, center)
       @media only screen and (max-width: $small)
-        +flex-parent(row, nowrap, flex-start, center)
+        +flex-parent(row, wrap, flex-start, center)
         margin-left: -8px
       img
         height: 60px
@@ -1031,6 +1036,7 @@ $earthPower: .015 * $solarPower
         border: 4px solid #fff
         @media only screen and (max-width: $very-small)
           border: 2px solid #fff
+          margin: 8px 8px 8px 8px
           height: 40px
           width: 40px
         &:hover, &:focus
@@ -1060,21 +1066,19 @@ $earthPower: .015 * $solarPower
   color: #fff
   height: 100vh
   overflow: hidden
-  @media only screen and (max-width: $very-small)
-    height: 75vh
   .controlFirstOverlay
     +flex-parent(column, nowrap, center, center)
     color: #fff
     width: 100%
     height: 100vh
     padding: 0 20px 0 20px
-    @media only screen and (max-width: $very-small)
-      height: 75vh
     .controlTitleContainer
       padding: 40px
       border: 5px solid #fff
       background: rgba(0,0,0,.5)
       font-family: $HeaderBold
+      @media only screen and (max-width: $very-small)
+        padding: 20px 10px 20px 10px
       .controlFirstTitle
         font-size: 5em
         text-align: center
@@ -1208,20 +1212,27 @@ $earthPower: .015 * $solarPower
   +flex-parent(row, wrap, center, flex-start)
   padding: 120px 40px 120px 40px
   height: auto
+  width: 100%
   background: #fff
   @media only screen and (max-width: $small)
     +flex-parent(column, nowrap, center, center)
     padding: 80px 20px 80px 20px
   @media only screen and (max-width: $very-small)
-    padding: 40px 20px 40px 20px
+    +flex-parent(column, nowrap, center, center)
+    padding: 20px 0 20px 0
   .controlFourthItem
     +flex-parent(column, nowrap, flex-start, flex-start)
     min-width: 325px
     margin: 40px
     @media only screen and (max-width: $small)
-      min-width: 80%
+      min-width: 0
+      width: 80%
+      margin: 40px 0 40px 0
     @media only screen and (max-width: $very-small)
-      min-width: 95%
+      min-width: 0
+      width: 100%
+      padding: 0 20px 0 20px
+      margin: 20px 0 20px 0
     &::selection, &::-moz-selection
       background: transparent
     .controlFourthItemTitle
@@ -1230,6 +1241,8 @@ $earthPower: .015 * $solarPower
       border-bottom: 5px solid #000
       font-family: $HeaderBold
       width: 100%
+      @media only screen and (max-width: $very-small)
+        font-size: 2em
     .controlFourthItemContents
       width: 100%
       &::selection, &::-moz-selection
@@ -1243,6 +1256,7 @@ $earthPower: .015 * $solarPower
       padding: 5px
       color: #000
       height: 90px
+      width: 100%
       z-index: 2
       transition: .5s
       .hiddenLayer
@@ -1278,9 +1292,18 @@ $earthPower: .015 * $solarPower
       .controlContentIcon
         height: 50px
         width: 50px
+        @media only screen and (max-width: $very-small)
+          height: 30px
+          width: 30px
       .controlContentText
         font-size: 1.5em
         padding: 0 0 0 20px
+        @media only screen and (max-width: $very-small)
+          font-size: 1.2em
+
+#githubHL, #APIDocHL
+  @media only screen and (max-width: $very-small)
+    font-size: .8em
 
 .a_revealContent
   +animation(revealContent, .5s, ease, .6s, 1, normal, forwards)
