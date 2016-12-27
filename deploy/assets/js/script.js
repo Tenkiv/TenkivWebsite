@@ -95,14 +95,36 @@ if (controlFirst) {
         [document.querySelector('#APIDocC'), document.querySelector('#APIDocHL'), document.querySelector('#APIDocContent')]
     ];
 
-    console.log(hiddenLayerArray[0][0], hiddenLayerArray[0][1], hiddenLayerArray[0][2]);
-
     for (let i=0; i<hiddenLayerArray.length; i++) {
         hiddenLayerArray[i][0].addEventListener('click', () => {
             hiddenLayerArray[i][2].className += ' a_controlContentRemove';
             hiddenLayerArray[i][1].className += ' a_revealContent';
         });
     }
+
+    //code for spec section
+    // var specTitleContainers = [].slice.call(document.querySelectorAll('.specContainer'));
+    // const selectedClass = ' specSelected';
+    //
+    // for (let i=0; i < specTitleContainers.length; i++) {
+    //     specTitleContainers[i].addEventListener('click', () => {
+    //         //animate svg close icon
+    //         rotateIcon(specTitleContainers[i].childNodes[1].childNodes[3], '0');
+    //         //add selected class
+    //         specTitleContainers[i].className += selectedClass;
+    //         //animate non-selected classes out
+    //         var notSelectedContainers = getRestOfArray(specTitleContainers, i);
+    //         for (let i=0; i < notSelectedContainers.length; i++) {
+    //             Velocity(notSelectedContainers[i], {opacity: 0, height: 0}, {duration: 300});
+    //         }
+    //
+    //         //TODO: finish this
+    //         //close all except for selected container
+    //
+    //         //animate currently selected open once that is finished
+    //
+    //     });
+    // }
 }
 
 //info page code
@@ -754,7 +776,6 @@ if (waterFirst) {
                     diagramInfoItems[i].addEventListener('click', (e) => {
                         let mouseX = e.pageX;
                         let mouseY = e.pageY;
-                        console.log("Clicked on: " + mouseX + ", " + mouseY);
                         switch (diagramInfoItems[i].id) {
                             case 'infoItemOne':
                                 if (document.querySelectorAll('#inputsPopup').length == 0) {
@@ -772,7 +793,7 @@ if (waterFirst) {
                                 }
                                 break;
                             default:
-                                console.log('some real shit going on here');
+                                console.log('error');
                         }
 
                     });

@@ -995,6 +995,7 @@ $earthPower: .015 * $solarPower
     width: 40%
     @media only screen and (max-width: $small)
       width: 100%
+      height: auto
   .footerLeft
     +flex-parent(column, nowrap, center, center)
     margin-right: 100px
@@ -1095,6 +1096,102 @@ $earthPower: .015 * $solarPower
   width: 100%
   z-index: 2
 
+.controlSecond
+  +flex-parent(column, nowrap, flex-start, center)
+  height: 100vh
+  background: #fff
+  overflow: hidden
+  color: #000
+  @media only screen and (max-width: $very-small)
+    height: 75vh
+  .controlSecondItemContainer
+    +flex-parent(column, nowrap, flex-start, center)
+    height: auto
+    width: 100%
+    color: #000
+    position: absolute
+    text-align: center
+    padding: 100px 20px 0 20px
+    @media only screen and (max-width: $very-small)
+      padding: 40px 20px 0 20px
+    @media only screen and (min-width: $very-small + 1 ) and (max-width: $small)
+      padding: 80px 20px 0 20px
+    .controlSecondTitle
+      font-size: 5em
+      @media only screen and (max-width: $very-small)
+        font-size: 3em
+      @media only screen and (min-width: $very-small +1 ) and  (max-width: $small)
+        font-size: 4em
+    .controlSecondDescription
+      font-size: 1.6em
+      padding: 60px 0 0 0
+      @media only screen and (max-width: $small)
+        font-size: 1.4em
+        padding: 40px 20px 0 20px
+
+.controlThird
+  +flex-parent(row, nowrap, center, center)
+  background: lightyellow
+  color: #000
+  height: auto
+  padding: 80px 0 80px 0
+  @media only screen and (max-width: $small)
+    +flex-parent(column, nowrap, center, center)
+    padding: 40px 0 40px 0
+  .tekdaqcSVG
+    background: #fff
+    height: auto
+    padding: 80px
+    flex: 7
+    max-width: 1200px
+    +flex-parent(column, nowrap, center, center)
+    @media only screen and (max-width: $very-small)
+      padding: 20px
+    @media only screen and (max-width: $small)
+      width: 100%
+  .tekSpecsContainer
+    background: limegreen
+    height: 100%
+    min-width: 350px
+    max-width: 600px
+    flex: 3
+    @media only screen and (max-width: $small)
+      max-width: 100%
+      width: 100%
+    .specContainer
+      +flex-parent(column, nowrap, center, center)
+      background: pink
+      .specTitleContainer
+        +flex-parent(row, nowrap, space-between, center)
+        width: 100%
+        height: 80px
+        background: #fff
+        padding: 0 20px 0 20px
+        border-bottom: 1px solid #000
+        &:hover
+          cursor: pointer
+        .specTitle
+          font-size: 2em
+          font-family: $HeaderBold
+        img
+          +transform(rotate(45deg))
+          height: 15px
+          width: 15px
+          transition: .2s
+          &:hover
+            cursor: pointer
+        img::selection
+          background: transparent
+      .specItemContainer
+        height: 0
+        opacity: 0
+        width: 100%
+        pointer-events: none
+        .specItem
+          height: auto
+          padding: 5px 20px 5px 20px
+          line-height: 1.2em
+
 +keyframes(revealContent)
   to
     +transform(scale(1, 1))
@@ -1190,6 +1287,21 @@ $earthPower: .015 * $solarPower
 
 .a_controlContentRemove
   +animation(controlContentRemove, .5s, ease, 0s, 1, normal, forwards)
+
+.controlFifth
+  +flex-parent(column, nowrap, center, center)
+  background: lightgreen
+  .controlFifthIcons
+    +flex-parent(row, nowrap, center, center)
+    padding: 0 0 80px 0
+    img
+      height: 100px
+      width: 100px
+      margin: 0 40px 0 40px
+  .controlFifthTable
+    background: pink
+    height: 500px
+    width: 95%
 
 //info page
 +keyframes(infoPackFloat)
