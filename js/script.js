@@ -514,9 +514,7 @@ if (waterFirst) {
 
     //save email to firebase database
     let saveEmail = (email) => {
-        databaseRef.push({
-            email: email
-        }, () => {
+        databaseRef.push(email, () => {
             console.log('Email successfully submitted');
             //remove email & submit stuff
             emailInput.style.opacity = '0';
