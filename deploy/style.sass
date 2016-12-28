@@ -171,6 +171,10 @@ body
   100%
     +transform(scale(1, 1))
 
++keyframes (height100)
+  to
+    height: 100%
+
 .bold
   font-family: $HeaderBold
 
@@ -1105,56 +1109,79 @@ $earthPower: .015 * $solarPower
   height: 100vh
   background: #fff
   overflow: hidden
+  position: relative
+  padding: 80px 20px 80px 20px
   color: #000
   @media only screen and (max-width: $very-small)
-    height: 75vh
-  .controlSecondItemContainer
-    +flex-parent(column, nowrap, flex-start, center)
-    height: auto
-    width: 100%
-    color: #000
-    position: absolute
+    padding: 40px 20px 40px 20px
+  .controlSecondTitle
+    font-size: 4em
+    font-family: $HeaderBold
     text-align: center
-    padding: 100px 20px 0 20px
+    width: 100%
     @media only screen and (max-width: $very-small)
-      padding: 40px 20px 0 20px
-    @media only screen and (min-width: $very-small + 1 ) and (max-width: $small)
-      padding: 80px 20px 0 20px
-    .controlSecondTitle
-      font-size: 5em
-      @media only screen and (max-width: $very-small)
-        font-size: 3em
-      @media only screen and (min-width: $very-small +1 ) and  (max-width: $small)
-        font-size: 4em
-    .controlSecondDescription
-      font-size: 1.6em
-      padding: 60px 0 0 0
-      @media only screen and (max-width: $small)
-        font-size: 1.4em
-        padding: 40px 20px 0 20px
+      font-size: 2.5em
+  .controlSecondDescription
+    font-size: 1.6em
+    padding: 40px 0 100px 0
+    width: 100%
+    text-align: center
+    @media only screen and (max-width: $very-small)
+      font-size: 1.2em
+      padding: 40px 0 40px 0
+  .controlSecondImage
+    opacity: 0
+    @media only screen and (max-width: $very-small)
+      width: 100%
+
+.controlSolidLine
+  stroke: #000
+  fill: none
+  stroke-linecap: round
+  stroke-linejoin: round
+  stroke-width: 2px
+  stroke-dashoffset: 9999
+
+.tekdaqcSVGFont
+  font-family: $HeaderBold
+  fill: #000
+  font-size: .7em
+
++keyframes(containersOut)
+  to
+    opacity: 0
+    +transform(scale(1,0))
+    height: 0
+
++keyframes(childContainerIn)
+  to
+    opacity: 1
+    +transform(scale(1, 1))
+    height: auto
 
 .controlThird
   +flex-parent(row, nowrap, center, center)
-  background: lightyellow
+  background: #eee url('assets/imgs/tiny_grid_bg.png') repeat
   color: #000
-  height: auto
-  padding: 80px 0 80px 0
+  position: relative
+  height: 100vh
+  border-top: 1px solid #999
+  border-bottom: 1px solid #999
   @media only screen and (max-width: $small)
     +flex-parent(column, nowrap, center, center)
     padding: 40px 0 40px 0
   .tekdaqcSVG
-    background: #fff
     height: auto
     padding: 80px
     flex: 7
     max-width: 1200px
     +flex-parent(column, nowrap, center, center)
-    @media only screen and (max-width: $very-small)
-      padding: 20px
     @media only screen and (max-width: $small)
       width: 100%
+    @media only screen and (max-width: $very-small)
+      padding: 20px
   .tekSpecsContainer
-    background: limegreen
+    +flex-parent(column, nowrap, flex-start, stretch)
     height: 100%
     min-width: 350px
     max-width: 600px
@@ -1163,14 +1190,12 @@ $earthPower: .015 * $solarPower
       max-width: 100%
       width: 100%
     .specContainer
-      +flex-parent(column, nowrap, center, center)
-      background: pink
+      +flex-parent(column, nowrap, flex-start, center)
       .specTitleContainer
         +flex-parent(row, nowrap, space-between, center)
         width: 100%
-        height: 80px
-        background: #fff
-        padding: 0 20px 0 20px
+        height: auto
+        padding: 20px
         border-bottom: 1px solid #000
         &:hover
           cursor: pointer
@@ -1187,14 +1212,25 @@ $earthPower: .015 * $solarPower
         img::selection
           background: transparent
       .specItemContainer
-        height: 0
         opacity: 0
         width: 100%
+        height: 0
         pointer-events: none
+        transform-origin: center top
+        +transform(scale(1,0))
         .specItem
           height: auto
           padding: 5px 20px 5px 20px
           line-height: 1.2em
+
+.a_specContainer
+  +animation(height100, 1s, ease, 0s, 1, normal, forwards)
+
+.a_containersOut
+  +animation(containersOut, .2s, ease, 0s, 1, normal, forwards)
+
+.a_childContainerIn
+  +animation(childContainerIn, .3s, ease, .5s, 1, normal, forwards)
 
 +keyframes(revealContent)
   to
@@ -1313,6 +1349,8 @@ $earthPower: .015 * $solarPower
 
 .controlFifth
   +flex-parent(column, nowrap, center, center)
+  position: relative
+  height: auto
   background: lightgreen
   .controlFifthIcons
     +flex-parent(row, nowrap, center, center)

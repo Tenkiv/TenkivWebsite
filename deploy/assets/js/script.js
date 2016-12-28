@@ -79,6 +79,19 @@ const animateLine = (line, length) => {
     line.style.strokeDashoffset = '0';
 };
 
+const rotateIcon = (icon) => {
+    icon.style.msTransform = 'rotate(0deg)';
+    icon.style.MozTransform = 'rotate(0deg)';
+    icon.style.webkitTransform = 'rotate(0deg)';
+    icon.style.transform = 'rotate(0deg)';
+};
+
+const getRestOfArray = (array, n) => {
+    let arrayCopy = array.slice();
+    arrayCopy.splice(n, 1);
+    return arrayCopy;
+};
+
 //control page code
 if (controlFirst) {
     window.sr = ScrollReveal();
@@ -103,28 +116,27 @@ if (controlFirst) {
     }
 
     //code for spec section
-    // var specTitleContainers = [].slice.call(document.querySelectorAll('.specContainer'));
-    // const selectedClass = ' specSelected';
-    //
-    // for (let i=0; i < specTitleContainers.length; i++) {
-    //     specTitleContainers[i].addEventListener('click', () => {
-    //         //animate svg close icon
-    //         rotateIcon(specTitleContainers[i].childNodes[1].childNodes[3], '0');
-    //         //add selected class
-    //         specTitleContainers[i].className += selectedClass;
-    //         //animate non-selected classes out
-    //         var notSelectedContainers = getRestOfArray(specTitleContainers, i);
-    //         for (let i=0; i < notSelectedContainers.length; i++) {
-    //             Velocity(notSelectedContainers[i], {opacity: 0, height: 0}, {duration: 300});
-    //         }
-    //
-    //         //TODO: finish this
-    //         //close all except for selected container
-    //
-    //         //animate currently selected open once that is finished
-    //
-    //     });
-    // }
+    let specContainers = [].slice.call(document.querySelectorAll('.specContainer'));
+    const selectedClass = ' specSelected';
+
+    for (let i=0; i < specContainers.length; i++) {
+        specContainers[i].addEventListener('click', () => {
+            //animate svg close icon
+            rotateIcon(specContainers[i].childNodes[1].childNodes[3], '0');
+            //add selected class
+            specContainers[i].className += selectedClass;
+            //animate non-selected classes out
+            let notSelectedContainers = getRestOfArray(specContainers, i);
+            for (let i=0; i < notSelectedContainers.length; i++) {
+                notSelectedContainers[i].className += ' a_containersOut';
+                notSelectedContainers[i].style.pointerEvents = 'none';
+            }
+            //animate container height to 100%
+            specContainers[i].className += ' a_specContainer';
+            //animate the child to appear
+            specContainers[i].childNodes[3].className += ' a_childContainerIn';
+        });
+    }
 }
 
 //info page code
@@ -514,9 +526,7 @@ if (waterFirst) {
 
     //save email to firebase database
     let saveEmail = (email) => {
-        databaseRef.push({
-            email: email
-        }, () => {
+        databaseRef.push(email, () => {
             console.log('Email successfully submitted');
             //remove email & submit stuff
             emailInput.style.opacity = '0';
