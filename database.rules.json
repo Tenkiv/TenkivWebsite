@@ -1,6 +1,13 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
+    ".read": false,
+    "emails": {
+      ".write": true,
+      ".validate": "newData.exists() && newData.val() !== null && !newData.isNumber() && !newData.isString() && !newData.isBoolean()",
+      "$an_address": {
+        ".write": "!data.exists()",
+        ".validate": "newData.hasChildren() === false && newData.val().matches(/^[^@]+@[^@]+\\.[^@.]{2,}$/i)"
+      }
+    }
   }
 }

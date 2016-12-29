@@ -209,7 +209,7 @@ if (infoPage) {
             teamPicArray[i][0].style.cursor = 'crosshair';
         });
         teamPicArray[i][0].addEventListener('mouseenter', () => {
-           teamPicArray[i][1].style.opacity = 1;
+            teamPicArray[i][1].style.opacity = 1;
         });
         teamPicArray[i][1].addEventListener('mouseenter', () => {
             teamPicArray[i][1].style.opacity = 1;
@@ -663,9 +663,9 @@ if (waterFirst) {
     const diagramInfoItems = document.querySelectorAll('.diagramInfoItem');
 
     const animatePopupOut = (t) => {
-      Velocity(t, {scale: 0}, {duration: 200, easing: 'swing', complete: () => {
-          document.querySelector('body').removeChild(t);
-      }});
+        Velocity(t, {scale: 0}, {duration: 200, easing: 'swing', complete: () => {
+            document.querySelector('body').removeChild(t);
+        }});
     };
 
     const animatePopupIn = (t) => {
@@ -718,7 +718,7 @@ if (waterFirst) {
         });
 
         infoItemPopupContainer.appendChild(infoItemClose);
-        
+
         let infoItemContent = document.createElement('div');
         infoItemContent.className = 'infoItemContent';
         infoItemPopupContainer.appendChild(infoItemContent);
@@ -738,7 +738,7 @@ if (waterFirst) {
                 infoItemPopupContainer.id = 'systemPopup';
                 infoItemContent.innerHTML = 'The <a href="info.html#section-3" class="bold" target="_blank">Tenkiv Nexus</a> is a scalable, modular, and clean system that uses solar thermal collectors in order to capture heat from the sun. The Nexus can then distribute the collected heat only where its needed.<br><br>Our <a href="info.html#section-2" class="bold" target="_blank">solar thermal collectors</a> are made from cost-effective materials: steel and glass. Because of their uniquely cheap cost and durability, they can be used in virtually any environment.';
                 break;
-            default: 
+            default:
                 console.log('error here');
         }
 
