@@ -733,7 +733,7 @@ if (waterFirst) {
             case 'infoItemTwo':
                 //stuff for modules here
                 infoItemPopupContainer.id = 'modulesPopup';
-                infoItemContent.innerHTML = 'The heat generated from the <a href="info.html#section-3" class="bold" target="_blank">Tenkiv Nexus</a> is routed to and from a module in order to power different types of systems.<br><br>The module can vary: heating, electricity production, refridgeration, water filtration– <a href="info.html#section-8" class="bold" target="_blank">anything</a> that requires power can be connected.';
+                infoItemContent.innerHTML = 'The heat generated from the <a href="info.html#section-3" class="bold" target="_blank">Tenkiv Nexus</a> is routed to and from a module in order to power different types of systems.<br><br>The module can vary: heating, electricity production, refrigeration, water filtration– <a href="info.html#section-8" class="bold" target="_blank">anything</a> that requires power can be connected.';
                 break;
             case 'infoItemThree':
                 //stuff for tenkiv system here
