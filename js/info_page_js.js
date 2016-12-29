@@ -1,7 +1,9 @@
-const sections = document.querySelectorAll('.section');
+const i_sections = document.querySelectorAll('.i_section');
 
-window.sr = ScrollReveal({ reset: false });
+if (i_sections) {
+    window.sr = ScrollReveal({ reset: false });
 
-for (let i = 0; i < sections.length; i++ ) {
-    sr.reveal(sections[i], { delay: 200, duration: 300, distance : '0px', origin: 'top', scale: 1 });
+    for (let i = 0; i < i_sections.length; i++ ) {
+        sr.reveal(i_sections[i], { delay: 200, duration: 300, distance : '0px', origin: 'top', scale: 1 });
+    }
 }
