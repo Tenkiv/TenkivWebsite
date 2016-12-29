@@ -1663,10 +1663,10 @@ $teamItemOverlayTop: $teamPicHeight*.6
         font-size: 1.5em
         width: 100%
     .infoSocialMediaContainer
-      +flex-parent(row, nowrap, flex-start, center)
+      +flex-parent(row, wrap, flex-start, center)
       width: 100%
       @media only screen and (max-width: $very-small)
-        +flex-parent(row, nowrap, center, center)
+        +flex-parent(row, wrap, center, center)
       img
         height: 50px
         width: 50px
@@ -1678,6 +1678,7 @@ $teamItemOverlayTop: $teamPicHeight*.6
           +transform(scale(.9, .9))
         @media only screen and (max-width: $very-small)
           border: 2px solid #fff
+          margin: 8px 8px 8px 8px
           height: 40px
           width: 40px
   .tenkivMapContainer

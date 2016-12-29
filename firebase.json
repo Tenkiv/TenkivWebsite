@@ -4,6 +4,9 @@
   },
   "hosting": {
     "public": "deploy",
+    "ignore": [
+      "script-compiled.js"
+    ],
     "redirects": [
       {"source" : "/info",
       "destination" : "/info.html",

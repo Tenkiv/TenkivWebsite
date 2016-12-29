@@ -19,9 +19,11 @@ const nItems = document.querySelectorAll('.nItem');
 const navToggle = document.getElementById('navToggle');
 
 //navbar logic
-nClose.addEventListener('click', () => {
-    navToggle.checked = false;
-});
+if(nOverlay) {
+    nClose.addEventListener('click', () => {
+        navToggle.checked = false;
+    });
+}
 
 for (let i=0; i<nItems.length; i++) {
     nItems[i].addEventListener('click', () => {
