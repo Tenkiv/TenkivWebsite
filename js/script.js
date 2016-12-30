@@ -479,14 +479,34 @@ if (infoPage) {
 }
 
 if (waterFirst) {
+    const fullscreenVideo = document.querySelector('.fullscreenVideo');
+
     if (document.documentMode || /Edge/.test(navigator.userAgent)) {
-        const fullscreenVideo = document.querySelector('.fullscreenVideo');
         fullscreenVideo.style.position = 'absolute';
         const waterTopSvgLine = document.querySelectorAll('.waterTopSvgLine');
         for (let i=0; i<waterTopSvgLine.length; i++) {
             waterTopSvgLine.className += ' edgeLineScaling';
         }
     }
+
+    const getOffset = (box) =>{
+        box = box.getBoundingClientRect();
+        return {
+            top: box.top + window.scrollY
+        }
+    };
+
+    //pause video if scrolled past second section
+    const waterWrapper = document.querySelector('.waterWrapper');
+    const pauseVideoPoint = getOffset(waterWrapper).top + 500;
+    window.addEventListener('scroll', () => {
+        console.log(window.pageYOffset);
+        if (window.pageYOffset > pauseVideoPoint) {
+            fullscreenVideo.pause();
+        } else {
+            fullscreenVideo.play();
+        }
+    });
 
     //firebase email form
     const config = {
@@ -716,17 +736,17 @@ if (waterFirst) {
             case 'infoItemOne':
                 //stuff for water diagram inputs here
                 infoItemPopupContainer.id = 'inputsPopup';
-                infoItemContent.innerHTML = 'The <a href="info.html#section-3" class="bold" target="_blank"> Tenkiv Nexus</a> water filtration module can use feed water from any source. River water, ocean water, or other contaminated waters are all able to be processed using the power that our system produces.';
+                infoItemContent.innerHTML = 'The <a href="info.html#i_section-3" class="bold" target="_blank"> Tenkiv Nexus</a> water filtration module can use feed water from any source. River water, ocean water, or other contaminated waters are all able to be processed using the power that our system produces.';
                 break;
             case 'infoItemTwo':
                 //stuff for modules here
                 infoItemPopupContainer.id = 'modulesPopup';
-                infoItemContent.innerHTML = 'The heat generated from the <a href="info.html#section-3" class="bold" target="_blank">Tenkiv Nexus</a> is routed to and from a module in order to power different types of systems.<br><br>The module can vary: heating, electricity production, refrigeration, water filtration– <a href="info.html#section-8" class="bold" target="_blank">anything</a> that requires power can be connected.';
+                infoItemContent.innerHTML = 'The heat generated from the <a href="info.html#i_section-3" class="bold" target="_blank">Tenkiv Nexus</a> is routed to and from a module in order to power different types of systems.<br><br>The module can vary: heating, electricity production, refrigeration, water filtration– <a href="info.html#i_section-8" class="bold" target="_blank">anything</a> that requires power can be connected.';
                 break;
             case 'infoItemThree':
                 //stuff for tenkiv system here
                 infoItemPopupContainer.id = 'systemPopup';
-                infoItemContent.innerHTML = 'The <a href="info.html#section-3" class="bold" target="_blank">Tenkiv Nexus</a> is a scalable, modular, and clean system that uses solar thermal collectors in order to capture heat from the sun. The Nexus can then distribute the collected heat only where its needed.<br><br>Our <a href="info.html#section-2" class="bold" target="_blank">solar thermal collectors</a> are made from cost-effective materials: steel and glass. Because of their uniquely cheap cost and durability, they can be used in virtually any environment.';
+                infoItemContent.innerHTML = 'The <a href="info.html#i_section-3" class="bold" target="_blank">Tenkiv Nexus</a> is a scalable, modular, and clean system that uses solar thermal collectors in order to capture heat from the sun. The Nexus can then distribute the collected heat only where its needed.<br><br>Our <a href="info.html#i_section-2" class="bold" target="_blank">solar thermal collectors</a> are made from cost-effective materials: steel and glass. Because of their uniquely cheap cost and durability, they can be used in virtually any environment.';
                 break;
             default: 
                 console.log('error here');
@@ -806,7 +826,9 @@ if (waterFirst) {
                         }
                     });
 
-                    Velocity(diagramInfoItems[i], {opacity: 1, scale: 1}, {duration: 200});
+                    Velocity(diagramInfoItems[i], {opacity: 1, scale: 1}, {duration: 200, complete: () => {
+                        diagramInfoItems[i].setAttribute('class', 'diagramInfoItem a_diagramInfoItem');
+                    }});
 
                     faucetWater.setAttribute('class', 'faucetWater a_FaucetWater');
                 }
