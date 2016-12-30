@@ -171,6 +171,12 @@ body
   100%
     +transform(scale(1, 1))
 
++keyframes(subtlePulse)
+  0%
+    +transform(scale(1, 1))
+  100%
+    +transform(scale(1.1, 1.1))
+
 +keyframes (height100)
   to
     height: 100%
@@ -207,7 +213,7 @@ $sectionSmallHeight: $sectionHeight*.75
       font-size: 1.2em
   .nHamburger
     background: #000 url('assets/imgs/hamburger.svg') no-repeat center
-    background-size: 25px 25px
+    background-size: 24px 24px
     width: 40px
     border: 1px solid #fff
     height: 40px
@@ -262,6 +268,18 @@ $sectionSmallHeight: $sectionHeight*.75
       width: 80%
   a.nItem:last-child
     border-bottom: none
+
+#nSelectedWater
+  color: $palette-11
+  border-bottom: 6px solid $palette-11
+
+#nSelectedControl
+  color: $palette-1
+  border-bottom: 6px solid $palette-1
+
+#nSelectedAbout
+  color: $palette-7
+  border-bottom: 6px solid $palette-7
 
 input[type=checkbox]
   display: none
@@ -646,6 +664,7 @@ $earthPower: .015 * $solarPower
   height: auto
   width: 100%
   padding: 80px 5vw 0 5vw
+  -webkit-backface-visibility: hidden
   @media only screen and (max-width: $very-small)
     padding: 40px 20px 20px 20px
   .waterThirdTitle
@@ -702,11 +721,11 @@ $earthPower: .015 * $solarPower
     .alternate
       +animation(moveDashes, 4s, linear, 0s, infinite, alternate, none)
     .waterInputToxic
-      stroke: #143082
+      stroke: $palette-11
     .waterInputRiver
-      stroke: #143082
+      stroke: $palette-11
     .waterInputOcean
-      stroke: #143082
+      stroke: $palette-11
     .cleanWater
       stroke: #57d4ff
     .hot
@@ -718,15 +737,15 @@ $earthPower: .015 * $solarPower
     .diagramInfoItem
       opacity: 0
       +transform(scale(0, 0))
-      +transform-origin(50% 50%)
+      transform-origin: center center
       &:hover
         cursor: pointer
     .diagramCircles
-      fill: #000
+      fill: $palette-11
       stroke-width: 0
       transition: .5s
       &:hover
-        fill: #333
+        fill: $palette-12
     .diagramNumbers
       fill: #fff
       stroke-width: 0
@@ -746,8 +765,20 @@ $earthPower: .015 * $solarPower
       stroke-dasharray: 1000
       stroke-dashoffset: 1000
 
+#infoItemOne
+  transform-origin: 125.05px 41.02px
+
+#infoItemTwo
+  transform-origin: 343.05px 311.69px
+
+#infoItemThree
+  transform-origin: 638.38px 163.69px
+
 .a_FaucetWater
   +animation(dashArrayZero, 3s, linear, 2s, 1, normal, forwards)
+
+.a_diagramInfoItem
+  +animation(subtlePulse, 1s, ease-in-out, 0s, infinite, alternate, forwards)
 
 .solidLine, .mobileSolidLine
   stroke: #000
@@ -887,14 +918,15 @@ $earthPower: .015 * $solarPower
   width: 100%
   height: auto
   position: relative
-  padding: 120px 20px 120px 20px
+  padding: 120px 20px 100px 20px
   @media only screen and (max-width: $very-small)
-    padding: 80px 20px 80px 20px
+    padding: 80px 20px 60px 20px
   .bottomWaterTopText
     color: #fff
     font-family: $Header
     font-size: 3em
     padding: 0 0 80px 0
+    text-align: center
     @media only screen and (max-width: $very-small)
       font-size: 2em
       padding: 0 0 40px 0
@@ -985,14 +1017,14 @@ $earthPower: .015 * $solarPower
   color: #fff
   width: 100%
   margin: -1px 0 0 0
-  padding: 120px 20px 120px 20px
+  padding: 100px 20px 120px 20px
   font-family: $Header
   +flex-parent(row, nowrap, center, center)
   @media only screen and (max-width: $small)
     +flex-parent(column, nowrap, center, center)
-    padding: 80px 40px 80px 40px
+    padding: 60px 40px 80px 40px
   @media only screen and (max-width: $very-small)
-    padding: 80px 20px 80px 20px
+    padding: 60px 20px 80px 20px
   .footerTitle
     font-family: $HeaderBold
     font-size: 2em
