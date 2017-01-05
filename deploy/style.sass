@@ -184,6 +184,9 @@ body
 .bold
   font-family: $HeaderBold
 
+.noPointerEvents
+  pointer-events: none
+
 $sectionHeight: 100vh
 $sectionSmallHeight: $sectionHeight*.75
 
@@ -1179,32 +1182,35 @@ $earthPower: .015 * $solarPower
   fill: #000
   font-size: .7em
 
-+keyframes(containersOut)
++keyframes(containerOut)
   to
     opacity: 0
     +transform(scale(1,0))
-    height: 0
 
-+keyframes(childContainerIn)
++keyframes(containerIn)
   to
     opacity: 1
     +transform(scale(1, 1))
-    height: auto
+
++keyframes(childContainerIn)
+  to
+    +transform(scale(1, 1))
 
 .controlThird
-  +flex-parent(row, nowrap, center, center)
+  +flex-parent(row, nowrap, center, flex-start)
   background: #eee url('assets/imgs/tiny_grid_bg.png') repeat
   color: #000
   position: relative
-  height: 100vh
+  height: auto
   border-top: 1px solid #999
   border-bottom: 1px solid #999
+  padding: 80px
   @media only screen and (max-width: $small)
     +flex-parent(column, nowrap, center, center)
     padding: 40px 0 40px 0
   .tekdaqcSVG
     height: auto
-    padding: 80px
+    padding: 0 80px 0 0
     flex: 7
     max-width: 1200px
     +flex-parent(column, nowrap, center, center)
@@ -1218,51 +1224,60 @@ $earthPower: .015 * $solarPower
     min-width: 350px
     max-width: 600px
     flex: 3
+    +animation(containerIn, .5s, ease, 0s, 1, normal, forwards)
     @media only screen and (max-width: $small)
       max-width: 100%
       width: 100%
-    .specContainer
-      +flex-parent(column, nowrap, flex-start, center)
-      .specTitleContainer
-        +flex-parent(row, nowrap, space-between, center)
-        width: 100%
-        height: auto
-        padding: 20px
-        border-bottom: 1px solid #000
+    .accordion
+      +flex-parent(row, nowrap, space-between, center)
+      border-bottom: 1px solid #000
+      width: 100%
+      padding: 0 20px 0 20px
+      height: 58px
+      &:hover
+        cursor: pointer
+      .accTitle
+        font-size: 1.4em
+        font-family: $HeaderBold
+      img
+        +transform(rotate(45deg))
+        height: 15px
+        width: 15px
+        transition: .2s
+        pointer-events: all
         &:hover
           cursor: pointer
-        .specTitle
-          font-size: 2em
-          font-family: $HeaderBold
-        img
-          +transform(rotate(45deg))
-          height: 15px
-          width: 15px
-          transition: .2s
-          &:hover
-            cursor: pointer
-        img::selection
-          background: transparent
-      .specItemContainer
-        opacity: 0
-        width: 100%
-        height: 0
-        pointer-events: none
-        transform-origin: center top
-        +transform(scale(1,0))
-        .specItem
-          height: auto
-          padding: 5px 20px 5px 20px
-          line-height: 1.2em
+      img::selection
+        background: transparent
+    .panel
+      width: 100%
+      display: none
+      opacity: 0
+      transform-origin: top center
+      +transform(scale(1, 0))
+      padding: 10px 0 0 0
+      .specItem
+        height: auto
+        padding: 5px 20px 5px 20px
+        line-height: 1.2em
+        font-size: .9em
+    .show
+      display: block !important
 
-.a_specContainer
-  +animation(height100, 1s, ease, 0s, 1, normal, forwards)
+#software
+  border-bottom: none
 
-.a_containersOut
-  +animation(containersOut, .2s, ease, 0s, 1, normal, forwards)
+.analogInputSvg, .digitalInputSvg, .digitalOutputSvg, .processorSvg, .connectivitySvg
+  fill: transparent
 
-.a_childContainerIn
-  +animation(childContainerIn, .3s, ease, .5s, 1, normal, forwards)
+.specContainerVisible
+  +animation(childContainerIn, .8s, ease, 0s, 1, normal, forwards)
+
+.hiddenContainer
+  +animation(containerOut, .2s, ease, 0s, 1, normal, forwards)
+
+.a_specItem
+  +animation(fadeIn, .2s, ease, .5s, 1, normal, forwards)
 
 +keyframes(revealContent)
   to

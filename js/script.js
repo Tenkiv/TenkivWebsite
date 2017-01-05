@@ -118,27 +118,100 @@ if (controlFirst) {
     }
 
     //code for spec section
-    let specContainers = [].slice.call(document.querySelectorAll('.specContainer'));
-    const selectedClass = ' specSelected';
+    let acc = document.querySelectorAll('.accordion');
+    let panel = document.querySelectorAll('.panel');
 
-    for (let i=0; i < specContainers.length; i++) {
-        specContainers[i].addEventListener('click', () => {
-            //animate svg close icon
-            rotateIcon(specContainers[i].childNodes[1].childNodes[3], '0');
-            //add selected class
-            specContainers[i].className += selectedClass;
-            //animate non-selected classes out
-            let notSelectedContainers = getRestOfArray(specContainers, i);
-            for (let i=0; i < notSelectedContainers.length; i++) {
-                notSelectedContainers[i].className += ' a_containersOut';
-                notSelectedContainers[i].style.pointerEvents = 'none';
+    let analogInputSvgs = document.querySelectorAll('.analogInputSvg');
+    let digitalInputSvgs = document.querySelectorAll('.digitalInputSvg');
+    let digitalOutputSvgs = document.querySelectorAll('.digitalOutputSvg');
+    let processorSvgs = document.querySelectorAll('.processorSvg');
+    let connectivitySvgs = document.querySelectorAll('.connectivitySvg');
+
+    let toArray = (obj) => {
+        let array = [];
+        // iterate backwards ensuring that length is an UInt32
+        for (let i = obj.length >>> 0; i--;) {
+            array[i] = obj[i];
+        }
+        return array;
+    };
+
+    let analogInputAcc = document.querySelector('#analogInputs');
+    let digitalInputAcc = document.querySelector('#digitalInputs');
+    let digitalOutputAcc = document.querySelector('#digitalOutputs');
+    let processorAcc = document.querySelector('#processor');
+    let connectivityAcc = document.querySelector('#connectivity');
+
+    for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener('click', () => {
+            let setClasses = !acc[i].classList.contains('active');
+            setClass(acc, 'active', 'remove');
+            setClass(panel, 'show', 'remove');
+
+            if (setClasses) {
+                acc[i].classList.toggle("active");
+                acc[i].nextElementSibling.classList.toggle("show");
+                Velocity(acc[i].nextElementSibling, {opacity: 1, scaleY: 1}, {duration: 200});
             }
-            //animate container height to 100%
-            specContainers[i].className += ' a_specContainer';
-            //animate the child to appear
-            specContainers[i].childNodes[3].className += ' a_childContainerIn';
         });
     }
+
+    function setClass(els, className, fnName) {
+        for (let i = 0; i < els.length; i++) {
+            els[i].classList[fnName](className);
+            if (els[i].className == 'panel') {
+                Velocity(acc[i].nextElementSibling, {opacity: 0, scaleY: 0}, {duration: 200});
+            }
+        }
+    }
+
+    let addEL = (els, target) => {
+        for (let i=0; i < els.length; i++) {
+            els[i].addEventListener('click', () => {
+                for (let i=0; i < acc.length; i++) {
+                    let setClasses = !acc[i].classList.contains('active');
+                    setClass(acc, 'active', 'remove');
+                    setClass(panel, 'show', 'remove');
+
+                    if (setClasses) {
+                        target.classList.toggle("active");
+                        target.nextElementSibling.classList.toggle("show");
+                        Velocity(target.nextElementSibling, {opacity: 1, scaleY: 1}, {duration: 200});
+                    }
+                }
+            });
+
+            els[i].addEventListener('mouseenter', () => {
+                for (let j=0; j < els.length; j++) {
+                    if (!els[j].classList.contains('velocity-animating')) {
+                        Velocity(els[j], {fill: '#FF810D'}, {duration: 200});
+                    } else {
+                        setTimeout(() => {
+                            Velocity(els[j], {fill: '#FF810D'}, {duration: 200});
+                        }, 200);
+                    }
+                }
+            });
+
+            els[i].addEventListener('mouseleave', () => {
+                for (let j=0; j < els.length; j++) {
+                    if (!els[j].classList.contains('velocity-animating')) {
+                        Velocity(els[j], 'reverse', {duration: 200});
+                    } else {
+                        setTimeout(() => {
+                            Velocity(els[j], 'reverse', {duration: 200});
+                        }, 200);
+                    }
+                }
+            });
+        }
+    };
+
+    addEL(toArray(analogInputSvgs), analogInputAcc);
+    addEL(toArray(digitalInputSvgs), digitalInputAcc);
+    addEL(toArray(digitalOutputSvgs), digitalOutputAcc);
+    addEL(toArray(processorSvgs), processorAcc);
+    addEL(toArray(connectivitySvgs), connectivityAcc);
 }
 
 //info page code
