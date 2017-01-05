@@ -103,30 +103,6 @@ if (controlFirst) {
             hiddenLayerArray[i][1].className += ' a_revealContent';
         });
     }
-
-    //code for spec section
-    // var specTitleContainers = [].slice.call(document.querySelectorAll('.specContainer'));
-    // const selectedClass = ' specSelected';
-    //
-    // for (let i=0; i < specTitleContainers.length; i++) {
-    //     specTitleContainers[i].addEventListener('click', () => {
-    //         //animate svg close icon
-    //         rotateIcon(specTitleContainers[i].childNodes[1].childNodes[3], '0');
-    //         //add selected class
-    //         specTitleContainers[i].className += selectedClass;
-    //         //animate non-selected classes out
-    //         var notSelectedContainers = getRestOfArray(specTitleContainers, i);
-    //         for (let i=0; i < notSelectedContainers.length; i++) {
-    //             Velocity(notSelectedContainers[i], {opacity: 0, height: 0}, {duration: 300});
-    //         }
-    //
-    //         //TODO: finish this
-    //         //close all except for selected container
-    //
-    //         //animate currently selected open once that is finished
-    //
-    //     });
-    // }
 }
 
 //info page code
@@ -500,81 +476,10 @@ if (waterFirst) {
     const waterWrapper = document.querySelector('.waterWrapper');
     const pauseVideoPoint = getOffset(waterWrapper).top + 500;
     window.addEventListener('scroll', () => {
-        console.log(window.pageYOffset);
         if (window.pageYOffset > pauseVideoPoint) {
             fullscreenVideo.pause();
         } else {
             fullscreenVideo.play();
-        }
-    });
-
-    //firebase email form
-    const config = {
-        apiKey: "AIzaSyBz9LfUL9cZP1bnZHGgwBovGyfa-YyloDw",
-        authDomain: "tenkivwebsite.firebaseapp.com",
-        databaseURL: "https://tenkivwebsite.firebaseio.com",
-        storageBucket: "tenkivwebsite.appspot.com",
-        messagingSenderId: "906948543213"
-    };
-
-    firebase.initializeApp(config);
-    const database = firebase.database();
-    const databaseRef = database.ref('emails');
-    const emailInput = document.querySelector('.emailInput');
-    const submitButton = document.querySelector('.submitButton');
-    const successMessage = document.querySelector('.successMessage');
-    const successMessageCheckmarkLine = document.querySelector('.successMessageCheckmarkLine');
-    const successMessageCheckmarkLineCircle = document.querySelector('.successMessageCheckmarkLineCircle');
-    const successMessageText = document.querySelector('.successMessageText');
-    const bottomWaterExplanationText = document.querySelector('.bottomWaterExplanationText');
-
-    //check if email is valid
-    let validateEmail = (email) => {
-        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-        return re.test(email);
-    };
-
-    //save email to firebase database
-    let saveEmail = (email) => {
-        databaseRef.push(email, () => {
-            console.log('Email successfully submitted');
-            //remove email & submit stuff
-            emailInput.style.opacity = '0';
-            submitButton.style.opacity = '0';
-            bottomWaterExplanationText.style.opacity = '0';
-            setTimeout(() => {
-                emailInput.style.display = 'none';
-                submitButton.style.display = 'none';
-                bottomWaterExplanationText.style.display = 'none';
-                setTimeout(() => {
-                    //show success message stuff
-                    successMessage.className = 'successMessageFlex';
-                    successMessageCheckmarkLine.setAttribute("class", "successMessageCheckmarkLine a_successMessageCheckmarkLine");
-                    successMessageCheckmarkLineCircle.setAttribute("class", "successMessageCheckmarkLineCircle a_successMessageCheckmarkLineCircle");
-                    successMessageText.className += ' a_successMessageText';
-                }, 500);
-            }, 500);
-        });
-    };
-
-    submitButton.addEventListener('click', () => {
-        let email = emailInput.value.toString();
-        //submit to firebase
-        saveEmail(email);
-    });
-
-    emailInput.addEventListener('input', () => {
-        let email = emailInput.value;
-        if (validateEmail(email)) {
-            //animate input box
-            emailInput.style.border = '6px solid #0ae084';
-            //show submit button & make it clickable
-            submitButton.style.opacity = '1';
-            submitButton.style.pointerEvents = 'all';
-        } else {
-            emailInput.style.border = null;
-            submitButton.style.opacity = 0;
-            submitButton.style.pointerEvents = 'none';
         }
     });
 
@@ -595,7 +500,7 @@ if (waterFirst) {
     const waterDiagramContainer = document.querySelector('.waterDiagramContainer');
     const faucetWater = document.querySelector('.faucetWater');
     const bottomWaterTopText = document.querySelector('.bottomWaterTopText');
-    const emailContainer = document.querySelector('.emailContainer');
+    const kickstarterContainer = document.querySelector('.kickstarterContainer');
 
     const footerItem = document.querySelectorAll('.footerItem');
     window.sr = ScrollReveal();
@@ -625,8 +530,7 @@ if (waterFirst) {
     }});
 
     sr.reveal(bottomWaterTopText, {duration: 500});
-    sr.reveal(emailContainer, {duration: 500});
-
+    sr.reveal(kickstarterContainer, {duration: 500});
     sr.reveal(footerItem, {duration: 500});
 
     //water section top constants

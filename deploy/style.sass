@@ -447,6 +447,50 @@ input[type=checkbox]:checked ~ div.nOverlay
   width: 100%
   z-index: 2
 
+.kickstarterVideo
+  +flex-parent (column, nowrap, center, center)
+  background: #fff
+  z-index: 99
+  position: relative
+  left: 0
+  color: #000
+  top: 0
+  height: auto
+  width: 100%
+  margin-bottom: -1px
+  padding: 80px 80px 40px 80px
+  @media only screen and (max-width: $very-small)
+    padding: 40px 20px 40px 20px
+  .kVideo
+    position: relative
+    width: 80vw
+    height: 45vw
+    left: 0
+    top: 0
+  .kickstarterBottomText
+    width: 80%
+    text-align: center
+    padding-top: 80px
+    @media only screen and (max-width: $very-small)
+      padding-top: 40px
+      width: 100%
+    .kBottomTextTop
+      width: 100%
+      font-size: 1.4em
+      padding-top: 60px
+      @media only screen and (min-width: $medium+1)
+        font-size: 2.5em
+    a
+      img
+        width: 60%
+        height: auto
+        transition: .2s
+        &:hover, &:active, &:focus
+          opacity: .8
+        @media only screen and (max-width: $very-small)
+          width: 85%
+
+
 .waterSecond
   +flex-parent (column, nowrap, center, center)
   background: #fff
@@ -926,85 +970,27 @@ $earthPower: .015 * $solarPower
     @media only screen and (max-width: $very-small)
       font-size: 2em
       padding: 0 0 40px 0
-  .emailContainer
-    height: 300px
+  a
     width: 100%
-    +flex-parent(column, nowrap, center, center)
-    .emailInput
-      width: 40vw
-      padding: 20px 10px 20px 20px
-      border: 6px solid #fff
-      background: #fff
-      color: #000
-      font-size: 2em
-      font-family: $Header
-      text-align: left
-      margin-bottom: 40px
-      transition: .5s
-      @media only screen and (max-width: $small)
-        width: 60%
-      @media only screen and (max-width: $very-small)
-        width: 90%
-        font-size: 1.6em
-    .submitButton
-      width: auto
-      background: #0ae084
-      padding: 15px
-      color: #fff
-      font-family: $HeaderBold
-      font-size: 2em
-      border: none
-      border-radius: 4px
-      transition: .5s
-      opacity: 0
-      pointer-events: none
-      &:hover, &:focus
-        cursor: pointer
-        +transform(scale(1.1, 1.1))
-    .bottomWaterExplanationText
-      font-family: $Header
-      width: 100%
-      text-align: center
-      color: #fff
-      font-size: 1.4em
+    text-align: center
+  img
+    width: 50%
+    height: auto
+    max-width: 1500px
+    transition: .2s
+    &:hover, &:active, &:focus
+      opacity: .8
+    @media only screen and (max-width: $very-small)
+      width: 90%
+  .bottomWaterExplanationText
+    font-family: $Header
+    width: 100%
+    text-align: center
+    color: #fff
+    font-size: 1.4em
+    padding-top: 80px
+    @media only screen and (max-width: $very-small)
       padding-top: 40px
-    .successMessage
-      display: none
-    .successMessageCheckmark
-      padding: 0
-      width: 100px
-      height: auto
-    .successMessageCheckmarkLine, .successMessageCheckmarkLineCircle
-      fill: none
-      stroke: #fff
-      stroke-width: 6px
-      stroke-miterlimit: 10
-      stroke-linejoin: round
-      stroke-dasharray: 300
-      stroke-dashoffset: 300
-      stroke-linecap: round
-    .successMessageCheckmarkLineCircle
-      +transform(rotate(-90deg))
-      transform-origin: center center
-    .successMessageText
-      font-family: $Header
-      font-size: 1.5em
-      color: #fff
-      padding-top: 40px
-      opacity: 0
-      text-align: center
-
-.successMessageFlex
-  +flex-parent(column, nowrap, center, center)
-
-.a_successMessageCheckmarkLineCircle
-  +animation(dashArrayZero, .5s, linear, 0s, 1, normal, forwards)
-
-.a_successMessageCheckmarkLine
-  +animation(dashArrayZero, 1s, linear, .5s, 1, normal, forwards)
-
-.a_successMessageText
-  +animation(fadeIn, .5s, linear, 1s, 1, normal, forwards)
 
 .footer
   height: auto
@@ -1125,6 +1111,29 @@ $earthPower: .015 * $solarPower
         font-family: $Header
         @media only screen and (max-width: $very-small)
           font-size: 1.5em
+    a
+      text-decoration: none
+      .ASOKContainer
+        margin-top: 100px
+        width: auto
+        height: auto
+        padding: 30px
+        background: #000
+        color: #fff
+        text-align: center
+        text-decoration: none
+        border-radius: 15px
+        .ASOKText
+          width: 100%
+          font-family: $Header
+          text-align: center
+          font-size: 1.2em
+          padding-bottom: 30px
+          text-decoration: none
+        img
+          width: 180px
+          @media only screen and (max-width: $very-small)
+            width: 150px
 
 .controlWrapper
   position: absolute
