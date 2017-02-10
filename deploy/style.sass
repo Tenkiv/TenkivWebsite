@@ -472,12 +472,38 @@ input[type=checkbox]:checked ~ div.nOverlay
     text-align: center
     padding-top: 80px
     @media only screen and (max-width: $very-small)
-      padding-top: 40px
+      padding-top: 60px
       width: 100%
+    .BMCLink
+      background: #55387F
+      color: #fff
+      text-transform: uppercase
+      text-decoration: none
+      transition: .5s
+      padding: 30px 40px 30px 40px
+      font-family: $HeaderBold
+      font-size: 2em
+      @media only screen and (max-width: $small)
+        font-size: 1.4em
+        padding: 20px 30px 20px 30px
+      &:hover, &:focus, &:active
+        background: #944B98
+        cursor: pointer
     .kBottomTextTop
       width: 100%
       font-size: 1.4em
-      padding-top: 60px
+      padding-top: 80px
+      @media only screen and (max-width: $very-small)
+        padding-top: 60px
+        font-size: 1.2em
+      & a
+        color: #000
+        text-decoration: none
+        transition: .5s
+      & a:hover, & a:focus
+        color: #fff
+        background: #000
+        cursor: pointer
       @media only screen and (min-width: $medium+1)
         font-size: 2.5em
     a
@@ -965,32 +991,98 @@ $earthPower: .015 * $solarPower
     color: #fff
     font-family: $Header
     font-size: 3em
-    padding: 0 0 80px 0
+    padding: 0 0 120px 0
     text-align: center
     @media only screen and (max-width: $very-small)
       font-size: 2em
-      padding: 0 0 40px 0
-  a
-    width: 100%
-    text-align: center
-  img
-    width: 50%
+      padding: 0 0 60px 0
+  .bottomWaterEventContainer
+    +flex-parent(row, wrap, center, flex-start)
+    width: auto
     height: auto
-    max-width: 1500px
-    transition: .2s
-    &:hover, &:active, &:focus
-      opacity: .8
-    @media only screen and (max-width: $very-small)
-      width: 90%
-  .bottomWaterExplanationText
-    font-family: $Header
-    width: 100%
-    text-align: center
-    color: #fff
-    font-size: 1.4em
-    padding-top: 80px
-    @media only screen and (max-width: $very-small)
-      padding-top: 40px
+    .bottomWaterEventChild
+      +flex-parent(column, nowrap, flex-start, center)
+      height: auto
+      width: 400px
+      text-align: center
+      color: #fff
+      margin: 40px 80px 40px 80px
+      text-decoration: none
+      @media only screen and (max-width: $very-small)
+        margin: 20px
+      & a
+        text-decoration: none
+      .ASOKContainer
+        width: auto
+        height: auto
+        padding: 30px
+        background: #000
+        color: #fff
+        text-align: center
+        text-decoration: none
+        border-radius: 15px
+        .ASOKText
+          width: 100%
+          font-family: $Header
+          text-align: center
+          font-size: 1.2em
+          padding-bottom: 20px
+          text-decoration: none
+        img
+          width: 180px
+          @media only screen and (max-width: $very-small)
+            width: 150px
+      .BMCLink
+        background: #55387F
+        color: #fff
+        text-transform: uppercase
+        text-decoration: none
+        transition: .5s
+        padding: 36px 60px 36px 60px
+        font-family: $HeaderBold
+        font-size: 1.2em
+        text-align: center
+        line-height: 1.4
+        border-radius: 15px
+        &:hover, &:focus, &:active
+          background: #944B98
+          cursor: pointer
+      .bwEventBottomText
+        padding-top: 40px
+        font-size: 1.4em
+        line-height: 1.4
+        @media only screen and (max-width: $very-small)
+          font-size: 1.2em
+          line-height: 1.2
+        & a
+          color: #fff
+          transition: .5s
+        & a:hover, & a:active, & a:focus
+          background: #000
+          cursor: pointer
+
+
+  //a
+  //  width: 100%
+  //  text-align: center
+  //img
+  //  width: 50%
+  //  height: auto
+  //  max-width: 1500px
+  //  transition: .2s
+  //  &:hover, &:active, &:focus
+  //    opacity: .8
+  //  @media only screen and (max-width: $very-small)
+  //    width: 90%
+  //.bottomWaterExplanationText
+  //  font-family: $Header
+  //  width: 100%
+  //  text-align: center
+  //  color: #fff
+  //  font-size: 1.4em
+  //  padding-top: 80px
+  //  @media only screen and (max-width: $very-small)
+  //    padding-top: 40px
 
 .footer
   height: auto
